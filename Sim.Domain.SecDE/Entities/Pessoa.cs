@@ -1,19 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sim.Domain.SecDE.Entities
 {
-    public class Cliente
+    [Table("Pessoas")]
+    public class Pessoa
     {
-        public int ClienteId { get; set; }
+        public Pessoa()
+        {
+            //this.Empresas = new HashSet<Empresa>();
+        }
+
+        public int Pessoa_Id { get; set; }
 
         // Pessoal
         public string Nome { get; set; }
-        public string NomeSocial { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public string Nome_Social { get; set; }
+        public DateTime? Data_Nascimento { get; set; }
         public string CPF { get; set; }
         public string RG { get; set; }
-        public string RGEmissor { get; set; }
+        public string RG_Emissor { get; set; }
+        public string RG_Emissor_UF { get; set; }
         public string Sexo { get; set; }
         public string Deficiencia { get; set; }
 
@@ -28,20 +36,18 @@ namespace Sim.Domain.SecDE.Entities
 
         //Contato
         //public List<KeyValuePair<string, string>> Telefones { get; set; }
-        public string TelMovel { get; set; }
-        public string TelFixo { get; set; }
+        public string Tel_Movel { get; set; }
+        public string Tel_Fixo { get; set; }
         public string Email { get; set; }
 
         //Informacao Cadastro
-        public DateTime DataCadastro { get; set; }
-        public DateTime UltimaAlteracao { get; set; }
+        public DateTime? Data_Cadastro { get; set; }
+        public DateTime? Ultima_Alteracao { get; set; }
         public bool Ativo { get; set; }
 
-
-        public string Telefone(string tipo, string numero)
-        {
-            return string.Format(@"{0} {1}", tipo, numero);
-        }
+        //Registro relacionais
+        //public int Empresa_Id { get; set; }
+        //public virtual IEnumerable<Empresa> Empresas { get; set; }
 
     }
 }
