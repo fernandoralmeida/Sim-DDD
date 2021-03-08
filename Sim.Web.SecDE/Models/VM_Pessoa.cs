@@ -69,7 +69,7 @@ namespace Sim.Web.SecDE.Models
         [DisplayName("Ultima Alteração")]
         public DateTime Ultima_Alteracao { get; set; }
 
-        [DisplayName("Cadastro Ativo?")]
+        [DisplayName("Cadastro")]
         public bool Ativo { get; set; }
 
     }

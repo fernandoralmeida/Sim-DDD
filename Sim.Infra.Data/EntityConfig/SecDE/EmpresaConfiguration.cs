@@ -25,16 +25,16 @@ namespace Sim.Infra.Data.EntityConfig.SecDE
 
             Property(c => c.CNPJ)
                 .IsRequired()
-                .HasMaxLength(14);
+                .HasMaxLength(18);
 
             Property(c => c.CEP)
-                .HasMaxLength(8);
+                .HasMaxLength(10);
 
             Property(c => c.UF)
                 .HasMaxLength(2);
 
             Property(c => c.Telefone)
-                .HasMaxLength(11);
+                .HasMaxLength(15);
 
             Property(c => c.Data_Situacao_Cadastral).IsRequired();
             Property(c => c.Data_Situacao_Especial).IsRequired();

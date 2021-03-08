@@ -23,13 +23,13 @@ namespace Sim.Infra.Data.EntityConfig.SecDE
 
             Property(c => c.CPF)
                 .IsRequired()
-                .HasMaxLength(11);
+                .HasMaxLength(14);
 
             Property(c => c.Data_Nascimento)
                 .IsRequired();
 
             Property(c => c.RG)
-                .HasMaxLength(10);
+                .HasMaxLength(14);
 
             Property(c => c.RG_Emissor)
                 .HasMaxLength(5);
@@ -38,16 +38,16 @@ namespace Sim.Infra.Data.EntityConfig.SecDE
                 .HasMaxLength(2);
 
             Property(c => c.CEP)
-                .HasMaxLength(8);
+                .HasMaxLength(10);
 
             Property(c => c.UF)
                 .HasMaxLength(2);
 
             Property(c => c.Tel_Fixo)
-                .HasMaxLength(10);
+                .HasMaxLength(15);
 
             Property(c => c.Tel_Movel)
-                .HasMaxLength(11);
+                .HasMaxLength(15);
 
             Property(c => c.Data_Cadastro)
                 .IsRequired();
