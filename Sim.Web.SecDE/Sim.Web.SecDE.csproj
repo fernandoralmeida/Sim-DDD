@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="bootstrap" Version="4.6.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
@@ -15,12 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Sim.Domain.SecDE\Sim.Domain.SecDE.csproj" />
     <ProjectReference Include="..\Sim.Infra.Data\Sim.Infra.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\css\dot.jpg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
 </Project>
