@@ -23,6 +23,7 @@ namespace Sim.Infra.Data.EntityConfig.SecDE
             Property(c => c.Nome_Fantasia)
                 .HasMaxLength(150);
 
+            HasIndex(c => c.CNPJ).IsUnique();
             Property(c => c.CNPJ)
                 .IsRequired()
                 .HasMaxLength(18);

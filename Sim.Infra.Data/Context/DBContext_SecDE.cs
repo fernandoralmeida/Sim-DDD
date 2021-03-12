@@ -35,7 +35,6 @@ namespace Sim.Infra.Data.Context
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasColumnType("varchar"));
 
-
             modelBuilder.Configurations.Add(new EntityConfig.SecDE.PessoaConfiguration());
             modelBuilder.Configurations.Add(new EntityConfig.SecDE.EmpresaConfiguration());
             modelBuilder.Configurations.Add(new EntityConfig.SecDE.EmpresaConfigurationQSA());

@@ -13,20 +13,31 @@
         @ViewBag.Message
     </div>
 }
-
-<h6>Qualificação | Ultima atualização: @Html.DisplayFor(model => model.Ultima_Alteracao)</h6>
 <hr />
+Ultima atualização: @Html.DisplayFor(model => model.Ultima_Alteracao)
+<hr />
+<h6>Qualificação</h6>
+
 <form asp-action="Edit">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col">
             <label asp-for="Nome" class="control-label"></label>
             <input asp-for="Nome" class="form-control" />
             <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col">
             <label asp-for="Nome_Social" class="control-label"></label>
             <input asp-for="Nome_Social" class="form-control" />
             <span asp-validation-for="Nome_Social" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="Sexo" class="control-label"></label>
+            <select asp-for="Sexo" class="form-control">
+                <option selected></option>
+                <option>Feminino</option>
+                <option>Masculino</option>
+            </select>
+            <span asp-validation-for="Sexo" class="text-danger"></span>
         </div>
     </div>
     <div class="form-row">
@@ -56,39 +67,39 @@
             <span asp-validation-for="RG_Emissor_UF" class="text-danger"></span>
         </div>
     </div>
+    <hr />
+    <h6>
+        <label asp-for="Deficiencia" class="control-label"></label>
+        <input asp-for="Deficiencia" class="form-control" hidden />
+    </h6>
     <div class="form-row">
         <div class="form-group col-md-2">
-            <label asp-for="Sexo" class="control-label"></label>
-            <select asp-for="Sexo" class="form-control">
-                <option selected></option>
-                <option>Feminino</option>
-                <option>Masculino</option>
-            </select>
-            <span asp-validation-for="Sexo" class="text-danger"></span>
-        </div>
-        <div class="form-group col">
-            <label asp-for="Deficiencia" class="control-label"></label>
-            <input asp-for="Deficiencia" class="form-control" hidden />
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                <label class="custom-control-label" for="customSwitch1">Física?</label>
+                <label class="custom-control-label" for="customSwitch1">Física</label>
             </div>
+        </div>
+        <div class="form-group col-md-2">
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                <label class="custom-control-label" for="customSwitch2">Visual?</label>
+                <label class="custom-control-label" for="customSwitch2">Visual</label>
             </div>
+        </div>
+        <div class="form-group col-md-2">
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                <label class="custom-control-label" for="customSwitch3">Auditiva?</label>
+                <label class="custom-control-label" for="customSwitch3">Auditiva</label>
             </div>
+        </div>
+        <div class="form-group col-md-2">
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                <label class="custom-control-label" for="customSwitch4">Intelectual?</label>
+                <label class="custom-control-label" for="customSwitch4">Intelectual</label>
             </div>
         </div>
     </div>
-    <h6>Endereço</h6>
     <hr />
+    <h6>Endereço</h6>
     <div class="form-row">
         <div class="form-group col-md-2">
             <label asp-for="CEP" class="control-label"></label>
@@ -128,9 +139,8 @@
             <span asp-validation-for="UF" class="text-danger"></span>
         </div>
     </div>
-
-    <h6>Contato</h6>
     <hr />
+    <h6>Contato</h6>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label asp-for="Tel_Movel" class="control-label"></label>
@@ -148,9 +158,8 @@
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
     </div>
-
-    <h6>Informações</h6>
     <hr />
+    <h6>Informações</h6>
     <div class="form-row">
         <div class="form-group col">
             <label asp-for="Data_Cadastro" class="control-label"></label>
@@ -170,13 +179,9 @@
             </div>
         </div>
     </div>
-
-    <button type="submit" class="btn btn-secondary">Enviar</button>
+    <a asp-action="Index" type="button" class="btn btn-secondary">Voltar</a>
+    <button type="submit" class="btn btn-primary">Alterar</button>
 </form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -184,10 +189,10 @@
     <script src="~/js/jquery.cep.js"></script>
     <script src="~/js/jquery.mask.min.js"></script>
     <script>
-    $('#txtcpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
-    $('#txtphone').mask('(00) 0000-0000', { placeholder: "(__) ____-____" });
-    $('#txtmobile').mask('(00) 00000-0000', { placeholder: "(__) _____-____" });
-    $('#cep').mask('00000-000', { placeholder: "_____-___" });
+        $('#txtcpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+        $('#txtphone').mask('(00) 0000-0000', { placeholder: "(__) ____-____" });
+        $('#txtmobile').mask('(00) 00000-0000', { placeholder: "(__) _____-____" });
+        $('#cep').mask('00000-000', { placeholder: "_____-___" });
     </script>
 
 }

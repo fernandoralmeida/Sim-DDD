@@ -21,7 +21,8 @@ namespace Sim.Infra.Data.EntityConfig.SecDE
             Property(c => c.Nome_Social)
                 .HasMaxLength(150);
 
-            Property(c => c.CPF)
+            HasIndex(c => c.CPF).IsUnique();
+            Property(c => c.CPF)                
                 .IsRequired()
                 .HasMaxLength(14);
 

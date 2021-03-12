@@ -17,4 +17,10 @@
     <ProjectReference Include="..\Sim.Infra.Data\Sim.Infra.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\css\dot.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
