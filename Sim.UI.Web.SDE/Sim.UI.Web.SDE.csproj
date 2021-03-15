@@ -9,13 +9,20 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="4.2.477" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
     <ProjectReference Include="..\Sim.Infrastructure.Data\Sim.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.Ioc.csproj" />
   </ItemGroup>
 
   <ItemGroup>

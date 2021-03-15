@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sim.Domain.SDE.Entities
 {
-    [Table("Pessoas")]
     public class Pessoa
     {
         public Pessoa()

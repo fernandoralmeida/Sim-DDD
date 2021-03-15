@@ -20,23 +20,20 @@ namespace Sim.Application.SDE
             _pessoaService = pessoaService;
         }
 
+        public IEnumerable<Pessoa> ConsultaByCPF(string _cpf)
+        {
+            return _pessoaService.ConsultaByCPF(_cpf);
+        }
+
+        public IEnumerable<Pessoa> ConsultaByNome(string _nome)
+        {
+            return _pessoaService.ConsultaByNome(_nome);
+        }
+
         public IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string nome_or_cpf)
         {
 
-            var cpf = _pessoaService.ConsultaByCPF(nome_or_cpf).ToList();
-            var nome = _pessoaService.ConsultaByNome(nome_or_cpf).ToList();
-
-            if (cpf.Count > 0)
-
-                return cpf;
-
-            else if (nome.Count > 0)
-
-                return nome;
-
-            else 
-                
-                return null;
+            return _pessoaService.ConsultarPessoaByNameOrCPF(nome_or_cpf);
         }
     }
 }

@@ -8,9 +8,13 @@ namespace Sim.Infrastructure.Data.Repositories.SecDE
 {
     using Sim.Domain.SDE.Interfaces.Repositories;
     using Sim.Domain.SDE.Entities;
+    using Context;
 
     public class PessoaRepository : RepositoryBase<Pessoa>, IPessoaRepository
     {
+        public PessoaRepository(DBContextSDE dbcontext) : base(dbcontext)
+        { }
+
         public IEnumerable<Pessoa> ConsultaByCPF(string _cpf)
         {
             return db.SDE_Pessoas.Where(c => c.CPF == _cpf).OrderBy(c => c.Nome);

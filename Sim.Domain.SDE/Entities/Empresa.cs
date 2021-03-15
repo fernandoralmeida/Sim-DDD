@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sim.Domain.SDE.Entities
 {
-    [Table("Empresa_QSA")]
     public class Empresa_QSA
     {
         public int Empresa_QSA_Id { get; set; }
@@ -14,7 +13,6 @@ namespace Sim.Domain.SDE.Entities
         public virtual Empresa Empresa { get; set; }
     }
 
-    [Table("Empresas")]
     public class Empresa
     {
         public int Empresa_Id { get; set; }
@@ -43,12 +41,10 @@ namespace Sim.Domain.SDE.Entities
         public string Motivo_Situacao_Cadastral { get; set; }
         public string Situacao_Especial { get; set; }
         public DateTime? Data_Situacao_Especial { get; set; }
-        public string Capital_Social { get; set; }
+        public decimal Capital_Social { get; set; }
 
         //Registros relacionais
-        public int Cliente_Id { get; set; }
-        public IEnumerable<Pessoa> Clientes { get; set; }
-        public virtual IEnumerable<Empresa_QSA> QSA { get; set; }
+        public virtual ICollection<Empresa_QSA> QSA { get; set; }
 
     }
 

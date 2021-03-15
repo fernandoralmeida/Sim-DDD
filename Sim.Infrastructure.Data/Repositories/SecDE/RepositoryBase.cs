@@ -3,45 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Sim.Infrastructure.Data.Repositories.SecDE
 {
     using Sim.Domain.SDE.Interfaces.Repositories;
     using Context;
-    using System.Data.Entity;
 
-    public class RepositoryBase<TEnty> : IDisposable, IRepositoryBase<TEnty> where TEnty : class
+    public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
     {
-        protected DBContextSDE db = new DBContextSDE();
-
-        public void Add(TEnty obj)
+        protected DBContextSDE db;
+        
+        public RepositoryBase(DBContextSDE dbcontext)
         {
-            db.Set<TEnty>().Add(obj);
+            db = dbcontext;
+        }
+
+        public void Add(TEntity obj)
+        {
+            db.Set<TEntity>().Add(obj);
             db.SaveChanges();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            db.Dispose();
         }
 
-        public IEnumerable<TEnty> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
-            return db.Set<TEnty>().ToList();
+            return db.Set<TEntity>().ToList();
         }
 
-        public TEnty GetById(int id)
+        public TEntity GetById(int id)
         {
-            return db.Set<TEnty>().Find(id);
+            return db.Set<TEntity>().Find(id);
         }
 
-        public void Remove(TEnty obj)
+        public void Remove(TEntity obj)
         {
-            db.Set<TEnty>().Remove(obj);
-            db.SaveChanges();
+            db.Set<TEntity>().Remove(obj);
         }
 
-        public void Update(TEnty obj)
+        public void Update(TEntity obj)
         {
             db.Entry(obj).State = EntityState.Modified;
             db.SaveChanges();

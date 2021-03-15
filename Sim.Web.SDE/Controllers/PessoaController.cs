@@ -16,7 +16,8 @@ namespace Sim.Web.SecDE.Controllers
     public class PessoaController : Controller
     {
 
-        private readonly PessoaRepository _pessoa = new PessoaRepository();
+        private readonly PessoaRepository _pessoa;
+       
         private readonly IMapper _mapper;
 
         public PessoaController(IMapper mapper) { _mapper = mapper; }

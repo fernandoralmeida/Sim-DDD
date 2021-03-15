@@ -6,28 +6,25 @@ using System.Collections.Generic;
 
 namespace Sim.UI.Web.SDE.Controllers
 {
-
-    using Sim.Infrastructure.Data.Repositories.SecDE;
+    using Infrastructure.Data.Repositories.SecDE;
     using Sim.Domain.SDE.Entities;
+    using Sim.Application.SDE.Interface;
     using ViewModels;
     using Sim.Application.SDE;
     using System.Linq;
 
     public class PessoaController : Controller
     {
-
-        private readonly PessoaRepository _pessoa = new PessoaRepository();
-        //private readonly PessoaAppService _pessoaApp = new PessoaAppService(ipse);
+        private readonly IPessoaAppService _pessoaApp;
         private readonly IMapper _mapper;
         private VMPessoaIndex _index = new VMPessoaIndex();
 
-        public PessoaController(IMapper mapper) { _mapper = mapper; }
+        public PessoaController(IMapper mapper, IPessoaAppService pessoaApp) { _mapper = mapper;  _pessoaApp = pessoaApp; }
 
         // GET: PessoaController
         public ActionResult Index()
-        {
-            
-            _index.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoa.GetAll());
+        {            
+            _index.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoaApp.GetAll());
             return View(_index);
         }
 
@@ -37,23 +34,8 @@ namespace Sim.UI.Web.SDE.Controllers
         {
             try
             {
-                                
-
-                if (!string.IsNullOrEmpty(collection.NomeOuCPF))
-                {
-
-                    var _cpf = _mapper.Map<IEnumerable<VMPessoa>>(_pessoa.ConsultaByCPF(collection.NomeOuCPF));
-
-                    var _nome = _mapper.Map<IEnumerable<VMPessoa>>(_pessoa.ConsultaByNome(collection.NomeOuCPF));
-
-                    if (_cpf.Count() > 0)
-                        collection.ListaPessoas = _cpf;
-                    else
-                        collection.ListaPessoas = _nome;
-
-                }
-                else
-                    collection.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoa.GetAll());
+                
+                collection.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoaApp.ConsultarPessoaByNameOrCPF(collection.NomeOuCPF));
 
                 return View(collection);
             }
@@ -69,7 +51,7 @@ namespace Sim.UI.Web.SDE.Controllers
         // GET: PessoaController/Details/5
         public ActionResult Details(int id)
         {
-            var pessoaviewmodel = _mapper.Map<VMPessoa>(_pessoa.GetById(id));
+            var pessoaviewmodel = _mapper.Map<VMPessoa>(_pessoaApp.GetById(id));
             return View(pessoaviewmodel);
         }
 
@@ -97,7 +79,7 @@ namespace Sim.UI.Web.SDE.Controllers
                 {
                     var _pessoadomain = _mapper.Map<Pessoa>(collection);
 
-                    _pessoa.Add(_pessoadomain);
+                    _pessoaApp.Add(_pessoadomain);
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -115,7 +97,7 @@ namespace Sim.UI.Web.SDE.Controllers
         // GET: PessoaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var pessoaviewmodel = _mapper.Map<VMPessoa>(_pessoa.GetById(id));
+            var pessoaviewmodel = _mapper.Map<VMPessoa>(_pessoaApp.GetById(id));
             return View(pessoaviewmodel);
         }
 
@@ -132,7 +114,7 @@ namespace Sim.UI.Web.SDE.Controllers
 
                     _pessoadomain.Pessoa_Id = id;
 
-                    _pessoa.Update(_pessoadomain);
+                    _pessoaApp.Update(_pessoadomain);
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -154,7 +136,7 @@ namespace Sim.UI.Web.SDE.Controllers
         }
 
         // POST: PessoaController/Delete/5
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, VMPessoa collection)
         {

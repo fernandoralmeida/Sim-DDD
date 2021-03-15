@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.ServiceFabric.Services.Remoting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +14,8 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE
 {
+
+    using Sim.Infrastructure.Ioc.SDE;
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,7 +28,14 @@ namespace Sim.UI.Web.SDE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //SDE Context Injector
+            new ContextInjector(services, Configuration);            
+            
             services.AddAutoMapper(typeof(Startup));
+
+            //SDE IoC
+            new Injectors().StartInjectors(services);
+
             services.AddControllersWithViews();
         }
 

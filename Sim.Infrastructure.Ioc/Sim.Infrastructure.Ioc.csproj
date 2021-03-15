@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Data\Sim.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
