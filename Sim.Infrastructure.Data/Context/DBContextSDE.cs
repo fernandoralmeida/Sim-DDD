@@ -27,9 +27,9 @@ namespace Sim.Infrastructure.Data.Context
             modelBuilder.Entity<Empresa>().ToTable("Empresa");
             modelBuilder.Entity<Empresa_QSA>().ToTable("EmpresaQsa");
 
-            modelBuilder.ApplyConfiguration(new EntityConfig.SecDE.PessoaMap());
-            modelBuilder.ApplyConfiguration(new EntityConfig.SecDE.EmpresaMap());
-            modelBuilder.ApplyConfiguration(new EntityConfig.SecDE.EmpresaQsaMap());
+            modelBuilder.ApplyConfiguration(new EntityConfig.SDE.PessoaMap());
+            modelBuilder.ApplyConfiguration(new EntityConfig.SDE.EmpresaMap());
+            modelBuilder.ApplyConfiguration(new EntityConfig.SDE.EmpresaQsaMap());
 
             base.OnModelCreating(modelBuilder);
         }

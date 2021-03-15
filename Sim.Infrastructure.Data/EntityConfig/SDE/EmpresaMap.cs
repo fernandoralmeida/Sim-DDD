@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sim.Domain.SDE.Entities;
 
-namespace Sim.Infrastructure.Data.EntityConfig.SecDE
+namespace Sim.Infrastructure.Data.EntityConfig.SDE
 {
     public class EmpresaMap : IEntityTypeConfiguration<Empresa>
     {

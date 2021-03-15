@@ -9,7 +9,7 @@ namespace Sim.Infrastructure.Ioc.SDE
     using Domain.SDE.Services;
     using Domain.SDE.Interfaces.Services;
     using Domain.SDE.Interfaces.Repositories;
-    using Data.Repositories.SecDE;
+    using Data.Repositories.SDE;
 
     public class Injectors
     {

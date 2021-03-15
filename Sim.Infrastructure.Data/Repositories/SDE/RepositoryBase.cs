@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Sim.Infrastructure.Data.Repositories.SecDE
+namespace Sim.Infrastructure.Data.Repositories.SDE
 {
     using Sim.Domain.SDE.Interfaces.Repositories;
     using Context;

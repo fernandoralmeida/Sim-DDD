@@ -7,7 +7,7 @@ using Sim.Domain.SDE.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Sim.Infrastructure.Data.EntityConfig.SecDE
+namespace Sim.Infrastructure.Data.EntityConfig.SDE
 {
     public class PessoaMap : IEntityTypeConfiguration<Pessoa>
     {

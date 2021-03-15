@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sim.Infrastructure.Data.Repositories.SecDE
+namespace Sim.Infrastructure.Data.Repositories.SDE
 {
     using Sim.Domain.SDE.Interfaces.Repositories;
     using Sim.Domain.SDE.Entities;

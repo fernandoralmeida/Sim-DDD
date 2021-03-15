@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Sim.UI.Web.SDE.Controllers
 {
-    using Infrastructure.Data.Repositories.SecDE;
+    using Infrastructure.Data.Repositories.SDE;
     using Sim.Domain.SDE.Entities;
     using Sim.Application.SDE.Interface;
     using ViewModels;

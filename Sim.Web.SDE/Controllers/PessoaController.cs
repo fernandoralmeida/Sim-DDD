@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Sim.Web.SecDE.Controllers
 {
 
-    using Sim.Infrastructure.Data.Repositories.SecDE;
+    using Sim.Infrastructure.Data.Repositories.SDE;
     using Sim.Domain.SDE.Entities;
     using Models;
 
