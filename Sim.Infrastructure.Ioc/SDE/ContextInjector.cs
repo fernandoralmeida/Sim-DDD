@@ -7,10 +7,10 @@ namespace Sim.Infrastructure.Ioc.SDE
     using Data.Context;
     public class ContextInjector 
     {
-        public ContextInjector(IServiceCollection services, IConfiguration config) 
+        public ContextInjector(IServiceCollection services, IConfiguration config, string connection) 
         {
             services.AddDbContext<DBContextSDE>(options => options.UseSqlServer(config
-                .GetConnectionString("Sim-DataBaseSDE")));
+                .GetConnectionString(connection)));
         }
     }
 }

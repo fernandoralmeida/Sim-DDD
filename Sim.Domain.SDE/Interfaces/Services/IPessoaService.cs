@@ -12,6 +12,6 @@ namespace Sim.Domain.SDE.Interfaces.Services
     {
         IEnumerable<Pessoa> ConsultaByNome(string _nome);
         IEnumerable<Pessoa> ConsultaByCPF(string _cpf);
-        IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string nome_or_cpf);
+        IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string _cpf, string _nome);
     }
 }

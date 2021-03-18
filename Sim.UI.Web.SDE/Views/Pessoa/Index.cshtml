@@ -4,11 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
+<h1>Pessoas</h1>
+
+<!--
 <p>
-    <a asp-action="Novo">Create New</a>
-</p>
+    <a asp-action="Novo">Adicionar Pessoa</a>
+</p>-->
 
 @if (ViewBag.IsMessage == true)
 {
@@ -18,24 +20,39 @@
     </div>
 }
 
-<form asp-action="Index">
-    <div class="form-row">
-        <div class="form-group">
-            <span asp-validation-for="NomeOuCPF" class="text-danger"></span>
-            <div class="input-group mb-3">
-                <input asp-for="NomeOuCPF" class="form-control" placeholder="Nome ou CPF" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
+<hr />
+<pre>Buscar por CPF ou Nome</pre>
+
+<div class="form-row mb-3">
+    <div class="form-group col-md-8">
+        <form asp-action="Index">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input asp-for="CPF" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="txtcpf">
+                        <input asp-for="Nome" class="form-control" placeholder="Nome" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary border" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                        </div>
+                        @if (Model.ListaPessoas.Count() == 0)
+                        {
+                            <div class="input-group-append">
+                                <a href="@Url.Action("Novo", "Pessoa")" class="btn btn-outline-success border" title="Adicionar Nova Pessoa"> + <i class="fa fa-user"></i></a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+    <div class="form-group col-md-4">
+    </div>
+</div>
 
-</form>
 
-<table class="table table-hover">
+<table class="table table-borderless table-sm">
     <caption>Lista de pessoas</caption>
-    <thead>
+    <thead class="thead-light">
         <tr>
             <th></th>
             <th>
@@ -60,49 +77,59 @@
     <tbody>
         @foreach (var item in Model.ListaPessoas)
         {
-        <tr>
-            <td>
-                <a href="" class="btn btn-sm btn-success" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
-            </td>
-            <td>
+            <tr class="border-bottom">
+                <td>
+                    <a href="" class="btn btn-sm btn-light" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
+                </td>
+                <td>
 
-                @{
-                    if ((item.Nome_Social != null) || (item.Nome_Social != string.Empty))
-                    {
+                    @{
+                        if ((item.Nome_Social != null) || (item.Nome_Social != string.Empty))
+                        {
 
-                        @Html.DisplayFor(modelItem => item.Nome_Social)
+                            @Html.DisplayFor(modelItem => item.Nome_Social)
+
+                        }
+                        else
+                            @Html.DisplayFor(modelItem => item.Nome)
 
                     }
-                    else
-                        @Html.DisplayFor(modelItem => item.Nome)
 
-                }
+                </td>
 
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.CPF)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel_Movel)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Tel_Movel)
-            </td>
+                <td>
+                    <a href="@Url.Action("Details", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
+                    <a href="@Url.Action("Edit", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Alterar informações"><i class="far fa-edit"></i></a>
+                    <a href="@Url.Action("Delete", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Excluir informações"><i class="far fa-window-close"></i></a>
 
-            <td>
-                <a href="@Url.Action("Details", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-info" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
-                <a href="@Url.Action("Edit", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-info" title="Alterar informações"><i class="far fa-edit"></i></a>
-                <a href="@Url.Action("Delete", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-danger" title="Excluir informações"><i class="far fa-window-close"></i></a>
-
-                <!--
-        Html.ActionLink("Edit", "Edit", new { id = item.Pessoa_Id }) |
-        Html.ActionLink("Details", "Details", new { id = item.Pessoa_Id }) |
-        Html.ActionLink("Delete", "Delete", new { id = item.Pessoa_Id })-->
-            </td>
-        </tr>
+                    <!--
+                    Html.ActionLink("Edit", "Edit", new { id = item.Pessoa_Id }) |
+                    Html.ActionLink("Details", "Details", new { id = item.Pessoa_Id }) |
+                    Html.ActionLink("Delete", "Delete", new { id = item.Pessoa_Id })-->
+                </td>
+            </tr>
         }
+
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/jquery.cep.js"></script>
+    <script src="~/js/jquery.mask.min.js"></script>
+    <script>
+        $('#txtcpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+    </script>
+}

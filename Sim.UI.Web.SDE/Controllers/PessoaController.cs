@@ -33,9 +33,8 @@ namespace Sim.UI.Web.SDE.Controllers
         public ActionResult Index(VMPessoaIndex collection)
         {
             try
-            {
-                
-                collection.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoaApp.ConsultarPessoaByNameOrCPF(collection.NomeOuCPF));
+            {                
+                collection.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoaApp.ConsultarPessoaByNameOrCPF(collection.CPF, collection.Nome));
 
                 return View(collection);
             }

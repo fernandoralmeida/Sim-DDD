@@ -21,7 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
     <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
-    <ProjectReference Include="..\Sim.Infrastructure.Data\Sim.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.Ioc.csproj" />
   </ItemGroup>
 

@@ -30,10 +30,10 @@ namespace Sim.Domain.SDE.Services
             return _pessoaRepository.ConsultaByNome(_nome);
         }
 
-        public IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string nome_or_cpf)
+        public IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string _cpf, string _nome)
         {
-            var cpf = _pessoaRepository.ConsultaByCPF(nome_or_cpf).ToList();
-            var nome = _pessoaRepository.ConsultaByNome(nome_or_cpf).ToList();
+            var cpf = _pessoaRepository.ConsultaByCPF(_cpf).ToList();
+            var nome = _pessoaRepository.ConsultaByNome(_nome).ToList();
 
             if (cpf.Count > 0)
 
@@ -45,7 +45,8 @@ namespace Sim.Domain.SDE.Services
 
             else
 
-                return _pessoaRepository.GetAll();
+            return null;
+            
         }
     }
 }

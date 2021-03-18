@@ -29,7 +29,7 @@ namespace Sim.UI.Web.SDE
         public void ConfigureServices(IServiceCollection services)
         {
             //SDE Context Injector
-            new ContextInjector(services, Configuration);            
+            new ContextInjector(services, Configuration, "Sim-DataBaseSDE");            
             
             services.AddAutoMapper(typeof(Startup));
 

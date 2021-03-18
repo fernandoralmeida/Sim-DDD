@@ -10,9 +10,11 @@ namespace Sim.UI.Web.SDE.ViewModels
 {
     public class VMPessoaIndex
     {
-        [DisplayName("Nome ou CPF")]
-        [Required(ErrorMessage = "Nome ou CPF requerido")]
-        public string NomeOuCPF { get; set; }
+        [DisplayName("Nome ou CPF")]        
+        public string CPF { get; set; }
+
+        [DisplayName("Nome ou CPF")]       
+        public string Nome { get; set; }
 
         public IEnumerable<VMPessoa> ListaPessoas { get; set; }
     }

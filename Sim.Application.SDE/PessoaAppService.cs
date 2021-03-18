@@ -30,10 +30,10 @@ namespace Sim.Application.SDE
             return _pessoaService.ConsultaByNome(_nome);
         }
 
-        public IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string nome_or_cpf)
+        public IEnumerable<Pessoa> ConsultarPessoaByNameOrCPF(string _cpf, string _nome)
         {
 
-            return _pessoaService.ConsultarPessoaByNameOrCPF(nome_or_cpf);
+            return _pessoaService.ConsultarPessoaByNameOrCPF(_cpf, _nome);
         }
     }
 }
