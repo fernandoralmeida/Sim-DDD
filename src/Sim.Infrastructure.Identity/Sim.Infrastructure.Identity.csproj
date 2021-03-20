@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sim.Domain.Identity\Sim.Domain.Identity.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Data\Sim.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.IoC.csproj" />
+  </ItemGroup>
+
 </Project>
