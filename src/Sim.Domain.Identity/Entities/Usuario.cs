@@ -2,9 +2,9 @@
 
 namespace Sim.Domain.Identity.Entities
 {
-    public class User
+    public class Usuario
     {
-        public User()
+        public Usuario()
         {
             Id = Guid.NewGuid().ToString();
         }
@@ -33,6 +33,6 @@ namespace Sim.Domain.Identity.Entities
 
         public virtual string UserName { get; set; }
 
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }

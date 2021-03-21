@@ -21,7 +21,7 @@ namespace Sim.Domain.SDE.Entities
         public string RG { get; set; }
         public string RG_Emissor { get; set; }
         public string RG_Emissor_UF { get; set; }
-        public string Sexo { get; set; }
+        public string Genero { get; set; }
         public string Deficiencia { get; set; }
 
         //Correspondencia

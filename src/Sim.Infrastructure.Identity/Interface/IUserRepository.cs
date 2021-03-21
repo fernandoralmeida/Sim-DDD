@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Sim.Domain.Identity.Interface.Repository
+namespace Sim.Infrastructure.Identity.Interface
 {
-    using Entities;
+    using Entity;
     public interface IUserRepository : IDisposable
     {
         Usuario GetById(string id);
         IEnumerable<Usuario> GetAll();
-        void Unlock (string id);
+        void Unlock(string id);
     }
 }

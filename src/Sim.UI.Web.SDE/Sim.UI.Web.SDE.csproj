@@ -19,12 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Sim.Application.Identity\Sim.Application.Identity.csproj" />
     <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
     <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Identity\Sim.Infrastructure.Identity.csproj" />
     <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Usuario\Controllers\" />
+    <Folder Include="Areas\Usuario\Data\" />
+    <Folder Include="Areas\Usuario\Models\" />
+    <Folder Include="Areas\Usuario\Views\" />
     <Folder Include="Views\Empresa\" />
   </ItemGroup>
 

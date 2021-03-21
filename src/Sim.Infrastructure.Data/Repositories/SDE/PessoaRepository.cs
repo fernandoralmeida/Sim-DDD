@@ -12,17 +12,17 @@ namespace Sim.Infrastructure.Data.Repositories.SDE
 
     public class PessoaRepository : RepositoryBase<Pessoa>, IPessoaRepository
     {
-        public PessoaRepository(DBContextSDE dbcontext) : base(dbcontext)
+        public PessoaRepository(DbContextSDE dbcontext) : base(dbcontext)
         { }
 
         public IEnumerable<Pessoa> ConsultaByCPF(string _cpf)
         {
-            return db.SDE_Pessoas.Where(c => c.CPF == _cpf).OrderBy(c => c.Nome);
+            return _db.SDE_Pessoas.Where(c => c.CPF == _cpf).OrderBy(c => c.Nome);
         }
 
         public IEnumerable<Pessoa> ConsultaByNome(string _nome)
         {
-            return db.SDE_Pessoas.Where(c => c.Nome.Contains(_nome)).OrderBy(c => c.Nome);
+            return _db.SDE_Pessoas.Where(c => c.Nome.Contains(_nome)).OrderBy(c => c.Nome);
         }
     }
 }

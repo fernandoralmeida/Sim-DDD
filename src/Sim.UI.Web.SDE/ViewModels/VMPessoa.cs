@@ -37,8 +37,9 @@ namespace Sim.UI.Web.SDE.ViewModels
         [DisplayName("UF")]
         public string RG_Emissor_UF { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Sexo")]
-        public string Sexo { get; set; }
+        [Required(ErrorMessage = "Preencha o campo gênero")]
+        [DisplayName("Gênero")]
+        public string Genero { get; set; }
 
         public string Deficiencia { get; set; }
 

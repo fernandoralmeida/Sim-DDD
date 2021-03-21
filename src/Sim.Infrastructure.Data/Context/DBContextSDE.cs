@@ -10,9 +10,9 @@ namespace Sim.Infrastructure.Data.Context
 
     using Sim.Domain.SDE.Entities;
 
-    public class DBContextSDE : DbContext
+    public class DbContextSDE : DbContext
     {
-        public DBContextSDE(DbContextOptions<DBContextSDE> options) :base(options) { }
+        public DbContextSDE(DbContextOptions<DbContextSDE> options) :base(options) { }
 
         public DbSet<Pessoa> SDE_Pessoas { get; set; }
         

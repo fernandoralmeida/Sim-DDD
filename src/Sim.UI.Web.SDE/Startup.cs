@@ -28,6 +28,10 @@ namespace Sim.UI.Web.SDE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Identity container
+            var containerIdentity = new Infrastructure.IoC.Identity.Container();
+            containerIdentity.RegisterServices(services, Configuration, "Sim-DataBaseIdentity");
+
             //SDE Conteiner
             var containerSDE = new Infrastructure.IoC.SDE.Container();
             containerSDE.RegisterServices(services, Configuration, "Sim-DataBaseSDE");            

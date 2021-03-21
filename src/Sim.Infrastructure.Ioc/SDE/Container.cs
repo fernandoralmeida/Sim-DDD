@@ -20,7 +20,7 @@ namespace Sim.Infrastructure.IoC.SDE
         public void RegisterServices(IServiceCollection services, IConfiguration config, string connection)
         {
             //registra o dbcontext aos serviços
-            services.AddDbContext<DBContextSDE>(options => options.UseSqlServer(config
+            services.AddDbContext<DbContextSDE>(options => options.UseSqlServer(config
                 .GetConnectionString(connection)));
 
             //registra o aplicação, dominio, repositorio aos serviços.

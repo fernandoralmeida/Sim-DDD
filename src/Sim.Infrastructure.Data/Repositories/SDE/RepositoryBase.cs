@@ -12,43 +12,43 @@ namespace Sim.Infrastructure.Data.Repositories.SDE
 
     public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
     {
-        protected DBContextSDE db;
+        protected readonly DbContextSDE _db;
         
-        public RepositoryBase(DBContextSDE dbcontext)
+        public RepositoryBase(DbContextSDE dbcontext)
         {
-            db = dbcontext;
+            _db = dbcontext;
         }
 
         public void Add(TEntity obj)
         {
-            db.Set<TEntity>().Add(obj);
-            db.SaveChanges();
+            _db.Set<TEntity>().Add(obj);
+            _db.SaveChanges();
         }
 
         public void Dispose()
         {
-            db.Dispose();
+            _db.Dispose();
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return db.Set<TEntity>().ToList();
+            return _db.Set<TEntity>().ToList();
         }
 
         public TEntity GetById(int id)
         {
-            return db.Set<TEntity>().Find(id);
+            return _db.Set<TEntity>().Find(id);
         }
 
         public void Remove(TEntity obj)
         {
-            db.Set<TEntity>().Remove(obj);
+            _db.Set<TEntity>().Remove(obj);
         }
 
         public void Update(TEntity obj)
         {
-            db.Entry(obj).State = EntityState.Modified;
-            db.SaveChanges();
+            _db.Entry(obj).State = EntityState.Modified;
+            _db.SaveChanges();
         }
     }
 }
