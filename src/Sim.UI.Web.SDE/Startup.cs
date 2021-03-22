@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE
 {
-
     public class Startup
     {
         
@@ -29,9 +28,8 @@ namespace Sim.UI.Web.SDE
         public void ConfigureServices(IServiceCollection services)
         {
             //Identity container
-            var containerIdentity = new Infrastructure.IoC.Identity.Container();
-            containerIdentity.RegisterServices(services, Configuration, "Sim-DataBaseIdentity");
-
+            new Infrastructure.IoC.Identity.Container().RegisterServices(services, Configuration, "Sim-DataBaseIdentity");
+            
             //SDE Conteiner
             var containerSDE = new Infrastructure.IoC.SDE.Container();
             containerSDE.RegisterServices(services, Configuration, "Sim-DataBaseSDE");            
@@ -47,6 +45,7 @@ namespace Sim.UI.Web.SDE
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseMigrationsEndPoint();
             }
             else
             {
@@ -54,11 +53,21 @@ namespace Sim.UI.Web.SDE
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var contextsde = serviceScope.ServiceProvider.GetRequiredService<Sim.Infrastructure.Data.Context.DbContextSDE>();
+                var contextidentity = serviceScope.ServiceProvider.GetRequiredService<Sim.Infrastructure.Data.Context.IdentityContext>();
+                contextsde.Database.Migrate();
+                contextidentity.Database.Migrate();
+            }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -66,6 +75,7 @@ namespace Sim.UI.Web.SDE
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

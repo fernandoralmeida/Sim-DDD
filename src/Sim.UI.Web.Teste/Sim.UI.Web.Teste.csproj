@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>36707c90-0c5f-4861-896c-d90c8c9f0895</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sim.Application.Identity\Sim.Application.Identity.csproj" />
+    <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Identity\Sim.Infrastructure.Identity.csproj" />
+    <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.IoC.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,7 +8,6 @@ namespace Sim.Infrastructure.Data.Context
 
     public class IdentityContext : IdentityDbContext
     {
-        private static readonly DbContextOptions<IdentityContext> _cxt;
         public IdentityContext(DbContextOptions<IdentityContext> options)
             :base(options)
         { }
@@ -19,11 +18,6 @@ namespace Sim.Infrastructure.Data.Context
         {
             modelbuilder.ApplyConfiguration(new EntityConfig.Identity.UserMap());
             base.OnModelCreating(modelbuilder);
-        }
-
-        public static IdentityContext Create()
-        {
-            return new IdentityContext(_cxt);
         }
     }
 }

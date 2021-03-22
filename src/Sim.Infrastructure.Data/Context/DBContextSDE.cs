@@ -12,6 +12,7 @@ namespace Sim.Infrastructure.Data.Context
 
     public class DbContextSDE : DbContext
     {
+
         public DbContextSDE(DbContextOptions<DbContextSDE> options) :base(options) { }
 
         public DbSet<Pessoa> SDE_Pessoas { get; set; }
@@ -53,7 +54,6 @@ namespace Sim.Infrastructure.Data.Context
 
             return base.SaveChanges();
         }
-        
 
     }
 }

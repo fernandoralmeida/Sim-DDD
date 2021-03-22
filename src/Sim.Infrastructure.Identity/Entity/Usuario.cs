@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-
 namespace Sim.Infrastructure.Identity.Entity
 {
     public class Usuario : IdentityUser

@@ -12,7 +12,10 @@ namespace Sim.UI.Web.SDE.Controllers
     using ViewModels;
     using Sim.Application.SDE;
     using System.Linq;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize]
+    [Route("[controller]/[action]")]
     public class PessoaController : Controller
     {
         private readonly IPessoaAppService _pessoaApp;
@@ -20,7 +23,7 @@ namespace Sim.UI.Web.SDE.Controllers
         private VMPessoaIndex _index = new VMPessoaIndex();
 
         public PessoaController(IMapper mapper, IPessoaAppService pessoaApp) { _mapper = mapper;  _pessoaApp = pessoaApp; }
-
+               
         // GET: PessoaController
         public ActionResult Index()
         {            

@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3 - Identity", "4.3 - Ide
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sim.Infrastructure.Identity", "src\Sim.Infrastructure.Identity\Sim.Infrastructure.Identity.csproj", "{D283129F-0A39-4CDF-91D6-0CED8958B8BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sim.Application.Identity", "src\Sim.Application.Identity\Sim.Application.Identity.csproj", "{930236B1-59F3-42A3-A9E7-42B76E0B1419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sim.Application.Identity", "src\Sim.Application.Identity\Sim.Application.Identity.csproj", "{930236B1-59F3-42A3-A9E7-42B76E0B1419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -22,14 +22,13 @@ namespace Sim.Infrastructure.IoC.Identity
 
             //registra o dbcontext padrão do identity
             services.AddDefaultIdentity<Usuario>()
-                .AddEntityFrameworkStores<IdentityContext>();
-
+                            .AddEntityFrameworkStores<IdentityContext>();
 
             //configura o identity
             services.Configure<IdentityOptions>(options => {
 
                 //define regras de login
-                options.SignIn.RequireConfirmedAccount = false;
+                options.SignIn.RequireConfirmedAccount = true;
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
 
