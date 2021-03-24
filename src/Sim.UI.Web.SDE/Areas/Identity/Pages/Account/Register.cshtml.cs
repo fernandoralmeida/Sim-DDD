@@ -51,8 +51,12 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account
             public string UserName  { get; set; }
 
             [Required]
-            [Display(Name = "Nome Completo")]
+            [Display(Name = "Nome")]
             public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "Sobrenome")]
+            public string LastName { get; set; }
 
             [Required]
             [Display(Name = "Genero")]
@@ -87,7 +91,7 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Usuario { UserName = Input.UserName, Name = Input.Name, Genero = Input.Genero, Email = Input.Email };
+                var user = new Usuario { UserName = Input.UserName, Name = Input.Name, LastName = Input.LastName, Gender = Input.Genero, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

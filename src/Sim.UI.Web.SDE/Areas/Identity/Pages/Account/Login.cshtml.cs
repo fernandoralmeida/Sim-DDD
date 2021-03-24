@@ -83,9 +83,13 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);               
                 if (result.Succeeded)
                 {
+                    var first_name = await _signInManager.UserManager.FindByNameAsync(Input.UserName);
+
+                    User.AddIdentity(new System.Security.Claims.ClaimsIdentity() { Label = first_name.Name });
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

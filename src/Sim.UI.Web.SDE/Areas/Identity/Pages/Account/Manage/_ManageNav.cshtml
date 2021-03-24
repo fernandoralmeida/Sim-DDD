@@ -1,4 +1,5 @@
-﻿@inject SignInManager<Sim.Infrastructure.Identity.Entity.Usuario> SignInManager
+﻿@using Sim.Infrastructure.Identity.Entity
+@inject SignInManager<Usuario> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }

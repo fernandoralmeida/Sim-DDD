@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
 {
+    using Sim.Application.Identity;
     using Sim.Infrastructure.Identity.Entity;
     public partial class IndexModel : PageModel
     {
@@ -33,6 +34,15 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Display(Name = "Nome")]
+            public string Name { get; set; }
+
+            [Display(Name = "Sobrenome")]
+            public string LastName { get; set; }
+
+            [Display(Name = "Gênero")]
+            public string Genero { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -42,11 +52,15 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var appuser = await _userManager.FindByNameAsync(userName);
 
             UserName = userName;
 
             Input = new InputModel
             {
+                Name = appuser.Name,
+                LastName = appuser.LastName,
+                Genero = appuser.Gender,
                 PhoneNumber = phoneNumber
             };
         }
@@ -88,8 +102,22 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
                 }
             }
 
+            var name_lastname = await _userManager.GetUserAsync(User);
+            if(Input.Name != name_lastname.Name || Input.LastName != name_lastname.LastName)
+            {
+                name_lastname.Name = Input.Name;
+                name_lastname.LastName = Input.LastName;
+                name_lastname.Gender = Input.Genero;
+                var update_user = await _userManager.UpdateAsync(name_lastname);
+                if(!update_user.Succeeded)
+                {
+                    StatusMessage = "Erro inesperado, tente novamente.";
+                    return RedirectToPage();
+                }
+            }
+
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Seu perfil foi atualizado";
             return RedirectToPage();
         }
     }
