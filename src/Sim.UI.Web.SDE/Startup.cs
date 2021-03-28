@@ -31,8 +31,7 @@ namespace Sim.UI.Web.SDE
             new Infrastructure.IoC.Identity.Container().RegisterServices(services, Configuration, "Sim-DataBaseIdentity");
             
             //SDE Conteiner
-            var containerSDE = new Infrastructure.IoC.SDE.Container();
-            containerSDE.RegisterServices(services, Configuration, "Sim-DataBaseSDE");            
+            new Infrastructure.IoC.SDE.Container().RegisterServices(services, Configuration, "Sim-DataBaseSDE");            
             
             services.AddAutoMapper(typeof(Startup));
 
@@ -54,14 +53,15 @@ namespace Sim.UI.Web.SDE
                 app.UseHsts();
             }
 
+            /*
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                var contextsde = serviceScope.ServiceProvider.GetRequiredService<Sim.Infrastructure.Data.Context.DbContextSDE>();
-                var contextidentity = serviceScope.ServiceProvider.GetRequiredService<Sim.Infrastructure.Data.Context.IdentityContext>();
+                var contextsde = serviceScope.ServiceProvider.GetRequiredService<Infrastructure.Data.Context.DbContextSDE>();
+                var contextidentity = serviceScope.ServiceProvider.GetRequiredService<Infrastructure.Data.Context.IdentityContext>();
                 contextsde.Database.Migrate();
                 contextidentity.Database.Migrate();
             }
-
+            */
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

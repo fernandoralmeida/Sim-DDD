@@ -44,7 +44,7 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
             public string Genero { get; set; }
 
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefone")]
             public string PhoneNumber { get; set; }
         }
 
@@ -70,7 +70,7 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível carregar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             await LoadAsync(user);
@@ -82,7 +82,7 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+                return NotFound($"Não foi possível carregar o usuário com ID '{_userManager.GetUserId(User)}'.");
             }
 
             if (!ModelState.IsValid)
@@ -97,13 +97,13 @@ namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "Erro inesperado ao tentar definir o número de telefone.";
                     return RedirectToPage();
                 }
             }
 
             var name_lastname = await _userManager.GetUserAsync(User);
-            if(Input.Name != name_lastname.Name || Input.LastName != name_lastname.LastName)
+            if(Input.Name != name_lastname.Name || Input.LastName != name_lastname.LastName || Input.Genero != name_lastname.Gender)
             {
                 name_lastname.Name = Input.Name;
                 name_lastname.LastName = Input.LastName;

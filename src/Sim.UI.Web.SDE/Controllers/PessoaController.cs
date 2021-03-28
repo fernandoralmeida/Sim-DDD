@@ -15,7 +15,6 @@ namespace Sim.UI.Web.SDE.Controllers
     using Microsoft.AspNetCore.Authorization;
 
     [Authorize]
-    [Route("[controller]/[action]")]
     public class PessoaController : Controller
     {
         private readonly IPessoaAppService _pessoaApp;
@@ -87,6 +86,20 @@ namespace Sim.UI.Web.SDE.Controllers
                 {
                     var _pessoadomain = _mapper.Map<Pessoa>(collection);
 
+
+                    if (collection.Fisica)
+                        _pessoadomain.Deficiencia += "Física;";
+
+                    if (collection.Visual)
+                        _pessoadomain.Deficiencia += "Visual;";
+
+                    if (collection.Auditiva)
+                        _pessoadomain.Deficiencia += "Auditiva;";
+
+                    if (collection.Intelectual)
+                        _pessoadomain.Deficiencia += "Intelectual;";
+
+
                     _pessoaApp.Add(_pessoadomain);
 
                     return RedirectToAction(nameof(Index));
@@ -105,7 +118,26 @@ namespace Sim.UI.Web.SDE.Controllers
         // GET: PessoaController/Edit/5
         public ActionResult Edit(int id)
         {
-            var pessoaviewmodel = _mapper.Map<VMPessoa>(_pessoaApp.GetById(id));
+            var pessoa = _pessoaApp.GetById(id);
+            var pessoaviewmodel = _mapper.Map<VMPessoa>(pessoa);
+
+            if (pessoa.Deficiencia != null)
+            {
+
+                if (pessoa.Deficiencia.Contains("Física"))
+                    pessoaviewmodel.Fisica = true;
+
+                if (pessoa.Deficiencia.Contains("Visual"))
+                    pessoaviewmodel.Visual = true;
+
+                if (pessoa.Deficiencia.Contains("Auditiva"))
+                    pessoaviewmodel.Auditiva = true;
+
+                if (pessoa.Deficiencia.Contains("Intelectual"))
+                    pessoaviewmodel.Intelectual = true;
+
+            }
+
             return View(pessoaviewmodel);
         }
 
@@ -119,6 +151,20 @@ namespace Sim.UI.Web.SDE.Controllers
                 if (ModelState.IsValid)
                 {
                     var _pessoadomain = _mapper.Map<Pessoa>(collection);
+
+                    _pessoadomain.Deficiencia = null;
+
+                    if (collection.Fisica)
+                        _pessoadomain.Deficiencia += "Física;";
+
+                    if (collection.Visual)
+                        _pessoadomain.Deficiencia += "Visual;";
+
+                    if (collection.Auditiva)
+                        _pessoadomain.Deficiencia += "Auditiva;";
+
+                    if (collection.Intelectual)
+                        _pessoadomain.Deficiencia += "Intelectual;";
 
                     _pessoadomain.Pessoa_Id = id;
 

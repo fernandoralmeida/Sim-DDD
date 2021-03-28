@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Sim.UI.Web.SDE.ViewModels;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,11 +25,13 @@ namespace Sim.UI.Web.SDE.Controllers
             return View();
         }
 
+        
         public IActionResult Privacy()
         {
             return View();
         }
 
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

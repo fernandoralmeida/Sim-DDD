@@ -43,6 +43,18 @@ namespace Sim.UI.Web.SDE.ViewModels
 
         public string Deficiencia { get; set; }
 
+        [DisplayName("Física")]
+        public bool Fisica { get; set; }
+
+        [DisplayName("Visual")]
+        public bool Visual { get; set; }
+
+        [DisplayName("Auditiva")]
+        public bool Auditiva { get; set; }
+
+        [DisplayName("Intelectual")]
+        public bool Intelectual { get; set; }
+
         //Correspondencia
         public string CEP { get; set; }
         public string Logradouro { get; set; }
