@@ -10,18 +10,19 @@
     Você solicitou o login com um código de recuperação. Este login não será lembrado até que você forneça
     um código de aplicativo autenticador no login ou desabilite 2FA e faça login novamente.
 </p>
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
+<div>
+        <form class="row col-md-4 g-3" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.RecoveryCode"></label>
+            <div class="col-md-12">
+                <label asp-for="Input.RecoveryCode" class="form-label"></label>
                 <input asp-for="Input.RecoveryCode" class="form-control" autocomplete="off" />
                 <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Conecte-se</button>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Conecte-se</button>
+            </div>            
         </form>
-    </div>
+
 </div>
 
 @section Scripts {

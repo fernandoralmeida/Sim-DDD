@@ -13,20 +13,24 @@
     </p>
 </div>
 
+
 <div>
-    <form id="delete-user" method="post" class="form-group">
+    <form id="delete-user" method="post" class="row g-3">
         <div asp-validation-summary="All" class="text-danger"></div>
         @if (Model.RequirePassword)
         {
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            <div class="col-md-6">
+                <label asp-for="Input.Password" class="form-label" for="floatingSenha"></label>
+                <input asp-for="Input.Password" class="form-control" id="floatingSenha" />
             </div>
         }
-    <button class="btn btn-danger" type="submit">Excluir dados e fechar minha conta</button>
+        
+        <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-danger" type="submit">Excluir dados e fechar minha conta</button>
+        </div>
     </form>
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

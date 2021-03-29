@@ -39,17 +39,15 @@ namespace Sim.UI.Web.SDE.Controllers
                 collection.ListaPessoas = _mapper.Map<IEnumerable<VMPessoa>>(_pessoaApp.ConsultarPessoaByNameOrCPF(collection.CPF, collection.Nome));
 
                 if(collection.ListaPessoas.Count() < 1)
-                {
-                    ViewBag.IsMessage = true;
-                    ViewBag.Message = "Pessoa não encontrada!";
+                {                    
+                    collection.StatusMessage = "Pessoa não encontrada!";
                 }
 
                 return View(collection);
             }
             catch (Exception ex)
             {
-                ViewBag.IsMessage = true;
-                ViewBag.Message = ex.Message;
+                collection.StatusMessage = ex.Message;
                 return View(collection);
             }
         }            
@@ -109,8 +107,7 @@ namespace Sim.UI.Web.SDE.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.IsMessage = true;
-                ViewBag.Message = ex.Message;
+                collection.StatusMessage = ex.Message;
                 return View(collection);
             }
         }
@@ -177,8 +174,7 @@ namespace Sim.UI.Web.SDE.Controllers
             }
             catch (Exception ex)
             {
-                ViewBag.IsMessage = true;
-                ViewBag.Message = ex.Message;
+                collection.StatusMessage = ex.Message;
                 return View(collection);
             }
         }

@@ -11,46 +11,44 @@
 <p>
     <a asp-action="Novo">Adicionar Pessoa</a>
 </p>-->
+<partial name="_StatusMessage" model="Model.StatusMessage"/>
 
 @if (ViewBag.IsMessage == true)
 {
-    <div class="alert alert-danger alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        @ViewBag.Message
-    </div>
+<div class="alert alert-danger alert-dismissable fade show" role="alert">
+    @ViewBag.Message
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 }
 
 <hr />
 <pre>Buscar por CPF ou Nome</pre>
 
 <div class="form-row mb-3">
-    <div class="form-group col-md-8">
+    <div class="form-group col-md-6">
         <form asp-action="Index">
             <div class="form-row">
                 <div class="form-group">
-                    <div class="input-group">
-                        <input asp-for="CPF" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="txtcpf">
+                    <div class="input-group mb-3">
+                        <input asp-for="CPF" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="inputCPF">
                         <input asp-for="Nome" class="form-control" placeholder="Nome" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-primary border" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
-                        </div>
+                        <button class="btn btn-outline-primary" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                        
                         @if (Model.ListaPessoas.Count() == 0)
                         {
-                            <div class="input-group-append">
-                                <a href="@Url.Action("Novo", "Pessoa")" class="btn btn-outline-success border" title="Adicionar Nova Pessoa"> + <i class="fa fa-user"></i></a>
-                            </div>
+                            <a href="@Url.Action("Novo", "Pessoa")" class="btn btn-outline-success" title="Adicionar Nova Pessoa"> + <i class="fa fa-user"></i></a>                           
                         }
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-6">
     </div>
 </div>
 
 
-<table class="table table-borderless">
+<table class="table table-borderless bg-white">
     <caption>Lista de pessoas</caption>
     <thead>
         <tr class="border-bottom shadow-sm">
@@ -80,7 +78,7 @@
         {
         <tr class="border-bottom">
             <td>
-                <a href="" class="btn btn-sm btn-light" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
+                <a href="" class="btn btn-sm btn-secondary" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
             </td>
             <td>
 
@@ -111,11 +109,11 @@
             </td>
 
             <td>
-                <a href="@Url.Action("Details", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
+                <a href="@Url.Action("Details", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-secondary" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
           
-                <a href="@Url.Action("Edit", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Alterar informações"><i class="far fa-edit"></i></a>
+                <a href="@Url.Action("Edit", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-secondary" title="Alterar informações"><i class="far fa-edit"></i></a>
          
-                <a href="@Url.Action("Delete", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-light" title="Excluir informações"><i class="far fa-window-close"></i></a>
+                <a href="@Url.Action("Delete", "Pessoa", new { id = item.Pessoa_Id })" class="btn btn-sm btn-secondary" title="Excluir informações"><i class="far fa-window-close"></i></a>
             </td>
                 <!--
     Html.ActionLink("Edit", "Edit", new { id = item.Pessoa_Id }) |
@@ -132,6 +130,6 @@
     <script src="~/js/jquery.cep.js"></script>
     <script src="~/js/jquery.mask.min.js"></script>
     <script>
-        $('#txtcpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+        $('#inputCPF').mask('000.000.000-00', { placeholder: "___.___.___-__" });
     </script>
 }

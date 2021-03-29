@@ -17,5 +17,8 @@ namespace Sim.UI.Web.SDE.ViewModels
         public string Nome { get; set; }
 
         public IEnumerable<VMPessoa> ListaPessoas { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
     }
 }

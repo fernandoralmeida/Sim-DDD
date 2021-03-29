@@ -4,197 +4,175 @@
     ViewData["Title"] = "Novo";
 }
 
-<h1>Novo</h1>
+<h5 class="display-5">Novo</h5>
 
-@if (ViewBag.IsMessage == true)
-{
-    <div class="alert alert-danger alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        @ViewBag.Message
-    </div>
-}
+<partial name="_StatusMessage" model="Model.StatusMessage"/>
 
-<hr />
-<h6>Qualificação</h6>
+<div>
+    <form class="row g-3 needs-validation" asp-action="Novo" novalidate>
 
-<form asp-action="Novo">
-    <div class="form-row">
-        <div class="form-group col-md-5">
-            <label asp-for="Nome" class="control-label"></label>
-            <input asp-for="Nome" class="form-control" />
-            <span asp-validation-for="Nome" class="text-danger"></span>
+        <hr />
+        <h6>Identificação</h6>
+
+        <div class="col-md-5">
+            <label asp-for="Nome" class="form-label" for="inputNome"></label>
+            <input asp-for="Nome" class="form-control" id="inputNome" required />
         </div>
-        <div class="form-group col-md-5">
-            <label asp-for="Nome_Social" class="control-label"></label>
-            <input asp-for="Nome_Social" class="form-control" />
-            <span asp-validation-for="Nome_Social" class="text-danger"></span>
+        <div class="col-md-5">
+            <label asp-for="Nome_Social" class="form-label" for="inputSocial"></label>
+            <input asp-for="Nome_Social" class="form-control" id="inputSocial" />
         </div>
-        <div class="form-group col-md-2">
-            <label asp-for="Genero" class="control-label"></label>
-            <select asp-for="Genero" class="form-control">
+        <div class="col-md-2">
+            <label asp-for="Genero" class="form-label" for="selectGenero"></label>
+            <select asp-for="Genero" class="form-select" id="selectGenero">
                 <option selected></option>
                 <option>Feminino</option>
                 <option>Masculino</option>
             </select>
-            <span asp-validation-for="Genero" class="text-danger"></span>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-3">
-            <label asp-for="Data_Nascimento" class="control-label"></label>
-            <input asp-for="Data_Nascimento" class="form-control" />
-            <span asp-validation-for="Data_Nascimento" class="text-danger"></span>
+
+        <div class="col-md-3">
+            <label asp-for="Data_Nascimento" class="form-label" for="inputNascimento"></label>
+            <input asp-for="Data_Nascimento" class="form-control" id="inputNascimento" required />
         </div>
-        <div class="form-group col-md-3">
-            <label asp-for="CPF" class="control-label"></label>
-            <input asp-for="CPF" class="form-control" id="txtcpf" />
-            <span asp-validation-for="CPF" class="text-danger"></span>
+        <div class="col-md-3">
+            <label asp-for="CPF" class="form-label" for="inputCPF"></label>
+            <input asp-for="CPF" class="form-control" id="inputCPF" required />
         </div>
-        <div class="form-group col-md-3">
-            <label asp-for="RG" class="control-label"></label>
-            <input asp-for="RG" class="form-control" />
-            <span asp-validation-for="RG" class="text-danger"></span>
+        <div class="col-md-3">
+            <label asp-for="RG" class="form-label" for="inputRG"></label>
+            <input asp-for="RG" class="form-control" id="inputRG" />
         </div>
-        <div class="form-group col-md-2">
-            <label asp-for="RG_Emissor" class="control-label"></label>
-            <input asp-for="RG_Emissor" class="form-control text-uppercase" />
-            <span asp-validation-for="RG_Emissor" class="text-danger"></span>
+        <div class="col-md-2">
+            <label asp-for="RG_Emissor" class="form-label" for="inputEmissor"></label>
+            <input asp-for="RG_Emissor" class="form-control text-uppercase" id="inputEmissor" />
         </div>
-        <div class="form-group col-md-1">
-            <label asp-for="RG_Emissor_UF" class="control-label"></label>
-            <input asp-for="RG_Emissor_UF" class="form-control text-uppercase" />
-            <span asp-validation-for="RG_Emissor_UF" class="text-danger"></span>
+        <div class="col-md-1">
+            <label asp-for="RG_Emissor_UF" class="form-label" for="inputEmissorUF"></label>
+            <input asp-for="RG_Emissor_UF" class="form-control text-uppercase" id="inputEmissorUF" />
         </div>
-    </div>
-    <hr />
-    <h6>
-        <label asp-for="Deficiencia" class="control-label"></label>
-        <input asp-for="Deficiencia" class="form-control" hidden />
-    </h6>
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <div class="custom-control custom-switch">
-                <input asp-for="Fisica" type="checkbox" class="custom-control-input" id="customSwitch1">
+
+        <hr />
+        <h6>
+            <label asp-for="Deficiencia" class="form-label"></label>
+            <input asp-for="Deficiencia" class="form-control" hidden />
+        </h6>
+
+        <div class="col-md-2">
+            <div class="form-switch">
+                <input asp-for="Fisica" type="checkbox" class="form-check-input" id="customSwitch1">
                 <label asp-for="Fisica" class="custom-control-label" for="customSwitch1"></label>
             </div>
         </div>
-        <div class="form-group col-md-2">
-            <div class="custom-control custom-switch">
-                <input asp-for="Visual" type="checkbox" class="custom-control-input" id="customSwitch2">
+        <div class="col-md-2">
+            <div class="form-switch">
+                <input asp-for="Visual" type="checkbox" class="form-check-input" id="customSwitch2">
                 <label asp-for="Visual" class="custom-control-label" for="customSwitch2"></label>
             </div>
         </div>
-        <div class="form-group col-md-2">
-            <div class="custom-control custom-switch">
-                <input asp-for="Auditiva" type="checkbox" class="custom-control-input" id="customSwitch3">
+        <div class="col-md-2">
+            <div class="form-switch">
+                <input asp-for="Auditiva" type="checkbox" class="form-check-input" id="customSwitch3">
                 <label asp-for="Auditiva" class="custom-control-label" for="customSwitch3"></label>
             </div>
         </div>
-        <div class="form-group col-md-2">
-            <div class="custom-control custom-switch">
-                <input asp-for="Intelectual" type="checkbox" class="custom-control-input" id="customSwitch4">
+        <div class="col-md-2">
+            <div class="form-switch">
+                <input asp-for="Intelectual" type="checkbox" class="form-check-input" id="customSwitch4">
                 <label asp-for="Intelectual" class="custom-control-label" for="customSwitch4"></label>
             </div>
         </div>
-    </div>
-    <hr />
-    <h6>Endereço</h6>
 
-    <div class="form-row">
-        <div class="form-group col-md-2">
-            <label asp-for="CEP" class="control-label"></label>
+        <hr />
+        <h6>Endereço</h6>
+
+
+        <div class="col-md-2">
+            <label asp-for="CEP" class="form-label" for="cep"></label>
             <input asp-for="CEP" class="form-control" id="cep" />
-            <span asp-validation-for="CEP" class="text-danger"></span>
         </div>
-        <div class="form-group col">
-            <label asp-for="Logradouro" class="control-label"></label>
+        <div class="col-md-8">
+            <label asp-for="Logradouro" class="form-label" for="rua"></label>
             <input asp-for="Logradouro" class="form-control" id="rua" />
-            <span asp-validation-for="Logradouro" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-2">
-            <label asp-for="Numero" class="control-label"></label>
+        <div class="col-md-2">
+            <label asp-for="Numero" class="form-label"></label>
             <input asp-for="Numero" class="form-control" />
-            <span asp-validation-for="Numero" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-3">
-            <label asp-for="Complemento" class="control-label"></label>
+        <div class="col-md-3">
+            <label asp-for="Complemento" class="form-label"></label>
             <input asp-for="Complemento" class="form-control" />
-            <span asp-validation-for="Complemento" class="text-danger"></span>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col">
-            <label asp-for="Bairro" class="control-label"></label>
+        <div class="col-md-5">
+            <label asp-for="Bairro" class="form-label" for="bairro"></label>
             <input asp-for="Bairro" class="form-control" id="bairro" />
-            <span asp-validation-for="Bairro" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-4">
-            <label asp-for="Cidade" class="control-label"></label>
+        <div class="col-md-3">
+            <label asp-for="Cidade" class="form-label" for="cidade"></label>
             <input asp-for="Cidade" class="form-control" id="cidade" />
-            <span asp-validation-for="Cidade" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-1">
-            <label asp-for="UF" class="control-label"></label>
+        <div class="col-md-1">
+            <label asp-for="UF" class="form-label" for="uf"></label>
             <input asp-for="UF" class="form-control" id="uf" />
-            <span asp-validation-for="UF" class="text-danger"></span>
         </div>
-    </div>
-    <hr />
-    <h6>Contato</h6>
 
-    <div class="form-row">
-        <div class="form-group col-md-4">
-            <label asp-for="Tel_Movel" class="control-label"></label>
+        <hr />
+        <h6>Contato</h6>
+
+
+        <div class="col-md-3">
+            <label asp-for="Tel_Movel" class="form-label"></label>
             <input asp-for="Tel_Movel" class="form-control" id="txtmobile" />
-            <span asp-validation-for="Tel_Movel" class="text-danger"></span>
         </div>
-        <div class="form-group col-md-4">
-            <label asp-for="Tel_Fixo" class="control-label"></label>
+        <div class="col-md-3">
+            <label asp-for="Tel_Fixo" class="form-label"></label>
             <input asp-for="Tel_Fixo" class="form-control" id="txtphone" />
-            <span asp-validation-for="Tel_Fixo" class="text-danger"></span>
         </div>
-        <div class="form-group col">
-            <label asp-for="Email" class="control-label"></label>
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label"></label>
             <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-    </div>
-    <hr />
-    <h6>Informações</h6>
 
-    <div class="form-row">
-        <div class="form-group col">
-            <label asp-for="Data_Cadastro" class="control-label"></label>
+        <hr />
+        <h6>Informações</h6>
+
+
+        <div class="col-md-3">
+            <label asp-for="Data_Cadastro" class="form-label"></label>
             <input asp-for="Data_Cadastro" class="form-control" disabled />
-            <span asp-validation-for="Data_Cadastro" class="text-danger"></span>
         </div>
-        <div class="form-group col">
-            <label asp-for="Ultima_Alteracao" class="control-label"></label>
+        <div class="col-md-3">
+            <label asp-for="Ultima_Alteracao" class="form-label"></label>
             <input asp-for="Ultima_Alteracao" class="form-control" disabled />
-            <span asp-validation-for="Ultima_Alteracao" class="text-danger"></span>
         </div>
-        <div class="form-group col">
-            <label asp-for="Ativo" class="control-label"></label>
+        <div class="col-md-3">
+            <label asp-for="Ativo" class="form-label"></label>
             <div class="custom-control custom-switch">
-                <input asp-for="Ativo" type="checkbox" class="custom-control-input" id="customSwitch5">
+                <input asp-for="Ativo" type="checkbox" class="form-check-input" id="customSwitch5">
                 <label class="custom-control-label" for="customSwitch5">Ativo?</label>
             </div>
         </div>
-    </div>
-    <a asp-action="Index" role="button" type="button" class="btn btn-secondary">Voltar</a>
-    <button type="submit" role="button" class="btn btn-primary">Gravar</button>
-</form>
+        <p />
+        <div class="d-grid gap-2 d-md-block">
+            <a asp-action="Index" role="button" type="button" class="btn btn-secondary">Voltar</a>
+            <button type="submit" role="button" class="btn btn-primary">Gravar</button>
+        </div>
+
+    </form>
+</div>
 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/jquery.cep.js"></script>
     <script src="~/js/jquery.mask.min.js"></script>
+    <script src="~/js/jquery.validation.js"></script>
     <script>
-    $('#txtcpf').mask('000.000.000-00', { placeholder: "___.___.___-__" });
-    $('#txtphone').mask('(00) 0000-0000', { placeholder: "(__) ____-____" });
-    $('#txtmobile').mask('(00) 00000-0000', { placeholder: "(__) _____-____" });
-    $('#cep').mask('00000-000', { placeholder: "_____-___" });
+        $('#inputCPF').mask('000.000.000-00', { placeholder: "___.___.___-__" });
+        $('#txtphone').mask('(00) 0000-0000', { placeholder: "(__) ____-____" });
+        $('#txtmobile').mask('(00) 00000-0000', { placeholder: "(__) _____-____" });
+        $('#cep').mask('00000-000', { placeholder: "_____-___" });
     </script>
 
 }
+

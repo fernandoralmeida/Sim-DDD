@@ -7,42 +7,35 @@
 
 @if (ViewBag.IsMessage == true)
 {
-    <div class="alert alert-danger alert-dismissable">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        @ViewBag.Message
-    </div>
+<div class="alert alert-danger alert-dismissable fade show" role="alert">
+    @ViewBag.Message
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 }
 
 
-<div style="margin:auto; width:350px">
-    <div class="card card-body">
+<div class="form-signin">    
         <section>
-            <form id="account" method="post">
-                <h5 class="text-center"><span class="badge badge-light">LG - Use uma conta local para fazer login.</span></h5>
-                <hr />
+            <form id="account" method="post" class="text-center">
+                <img src="~/css/imgs/sim_logo.png" alt="" width="48" height="48">               
+                <h6 class="mb-3 fw-normal">Entrar no Sim Web</h6>
                 <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Input.UserName"></label>
-                    <input asp-for="Input.UserName" class="form-control form-control-lg" />
-                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                <div class="form-floating">
+                    <input asp-for="Input.UserName" type="text" class="form-control" id="floatingInput" placeholder="Identificador" />
+                    <label asp-for="Input.UserName" for="floatingInput"></label>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Input.Password"></label>
-                    <input asp-for="Input.Password" class="form-control form-control-lg" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <div class="form-floating">
+                    <input asp-for="Input.Password" type="password" class="form-control" id="floatingsenha" placeholder="Senha"/>
+                    <label asp-for="Input.Password" for="floatingsenha"></label>                    
                 </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe">
-                            <input asp-for="Input.RememberMe" />
-                            @Html.DisplayNameFor(m => m.Input.RememberMe)
-                        </label>
-                    </div>
+                <div class="form-check form-switch mb-3">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" class="form-check-input"/>
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Entrar</button>
-                </div>
-                <div class="form-group">
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Entrar</button>
+                <div class="form-floating">
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu sua senha?</a>
                     </p>
@@ -55,7 +48,6 @@
                 </div>
             </form>
         </section>
-    </div>
 </div>
 
 @section Scripts {

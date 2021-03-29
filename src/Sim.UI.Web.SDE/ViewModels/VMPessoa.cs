@@ -84,5 +84,8 @@ namespace Sim.UI.Web.SDE.ViewModels
 
         [DisplayName("Cadastro")]
         public bool Ativo { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
     }
 }
