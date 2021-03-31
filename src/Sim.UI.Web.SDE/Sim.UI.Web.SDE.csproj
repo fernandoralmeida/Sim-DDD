@@ -31,10 +31,6 @@
     <ProjectReference Include="..\Sim.Infrastructure.Ioc\Sim.Infrastructure.IoC.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Empresa\" />
-  </ItemGroup>
-
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

@@ -13,14 +13,19 @@ namespace Sim.Infrastructure.Data.Repositories.SDE
     {
         public EmpresaRepository(DbContextSDE dbcontext) : base(dbcontext) { }
 
-        public IEnumerable<Empresa> Consulta_CNAE(string _cnae)
+        public IEnumerable<Empresa> ConsultaByCNAE(string cnae)
         {
-            return _db.SDE_Empresas.Where(p => p.CNAE_Principal == _cnae);
+            return _db.SDE_Empresas.Where(p => p.CNAE_Principal == cnae);
         }
 
-        public IEnumerable<Empresa> Consulta_CNPJ(string _cnpj)
+        public IEnumerable<Empresa> ConsultaByCNPJ(string cnpj)
         {
-            return _db.SDE_Empresas.Where(p => p.CNPJ == _cnpj);
+            return _db.SDE_Empresas.Where(p => p.CNPJ == cnpj);
+        }
+
+        public IEnumerable<Empresa> ConsultaByRazaoSocial(string name)
+        {
+            return _db.SDE_Empresas.Where(p => p.Nome_Empresarial == name || p.Nome_Fantasia == name);
         }
     }
 }

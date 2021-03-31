@@ -10,8 +10,10 @@ namespace Sim.Domain.SDE.Interfaces.Services
 
     public interface IEmpresaService : IServiceBase<Empresa>
     {
-        IEnumerable<Empresa> Consulta_CNPJ(string _cnpj);
+        IEnumerable<Empresa> ConsultaByCNPJ(string _cnpj);
 
-        IEnumerable<Empresa> Consulta_CNAE(string _cnae);
+        IEnumerable<Empresa> ConsultaByCNAE(string _cnae);
+
+        IEnumerable<Empresa> ConsultaByRazaoSocial(string _name);
     }
 }

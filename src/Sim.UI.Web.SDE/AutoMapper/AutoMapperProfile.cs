@@ -15,6 +15,12 @@ namespace Sim.UI.Web.SDE.AutoMapper
         {
             CreateMap<Pessoa, VMPessoa>();
             CreateMap<VMPessoa, Pessoa>().ReverseMap();
+
+            CreateMap<Empresa, VMEmpresa>();
+            CreateMap<VMEmpresa, Empresa>().ReverseMap();
+
+            CreateMap<Empresa_QSA, VMEmpresaQsa>();
+            CreateMap<VMEmpresaQsa, Empresa_QSA>().ReverseMap();
         }
     }
 }

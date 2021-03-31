@@ -112,9 +112,6 @@ namespace Sim.UI.Web.SDE.ViewModels
         public string Capital_Social { get; set; }
 
         //Registros relacionais
-        public int Cliente_Id { get; set; }
-        public IEnumerable<VMPessoa> Clientes { get; set; }
-
         public virtual IEnumerable<VMEmpresaQsa> QSA { get; set; }
     }
 }

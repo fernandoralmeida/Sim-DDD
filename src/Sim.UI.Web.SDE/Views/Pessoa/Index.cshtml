@@ -81,19 +81,7 @@
                 <a href="" class="btn btn-sm btn-secondary" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
             </td>
             <td>
-
-                @{
-                    if ((item.Nome_Social != null) || (item.Nome_Social != string.Empty))
-                    {
-
-                        @Html.DisplayFor(modelItem => item.Nome_Social)
-
-                    }
-                    else
-                        @Html.DisplayFor(modelItem => item.Nome)
-
-                }
-
+                @Html.DisplayFor(modelItem => item.Nome)
             </td>
 
             <td>

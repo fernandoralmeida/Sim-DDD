@@ -1,18 +1,38 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Sim.UI.Web.SDE.Controllers
 {
+    using Infrastructure.Data.Repositories.SDE;
+    using Sim.Domain.SDE.Entities;
+    using Sim.Application.SDE.Interface;
+    using ViewModels;
+    using Sim.Application.SDE;
+
     public class EmpresaController : Controller
     {
+        private readonly IEmpresaAppService _empresaAppService;
+        private readonly IMapper _mapper;
+        private VMEmpresaIndex _index = new VMEmpresaIndex();
+
+
+        public EmpresaController(IMapper mapper, IEmpresaAppService empresaApp)
+        {
+            _mapper = mapper;
+            _empresaAppService = empresaApp;
+        }
+
         // GET: EmpresaController
         public ActionResult Index()
         {
-            return View();
+            _index.ListaEmpresas = _mapper.Map<IEnumerable<VMEmpresa>>(_empresaAppService.GetAll());
+            return View(_index);
         }
 
         // GET: EmpresaController/Details/5
@@ -30,7 +50,7 @@ namespace Sim.UI.Web.SDE.Controllers
         // POST: EmpresaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(VMEmpresa collection)
         {
             try
             {
@@ -51,7 +71,7 @@ namespace Sim.UI.Web.SDE.Controllers
         // POST: EmpresaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, VMEmpresa collection)
         {
             try
             {
@@ -72,7 +92,7 @@ namespace Sim.UI.Web.SDE.Controllers
         // POST: EmpresaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, VMEmpresa collection)
         {
             try
             {

@@ -1,0 +1,111 @@
+﻿@model Sim.UI.Web.SDE.ViewModels.VMEmpresaIndex
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Empresas</h1>
+
+<!--
+<p>
+    <a asp-action="Novo">Adicionar Pessoa</a>
+</p>-->
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<hr />
+<pre>Buscar por CNPJ ou Nome Empresarial</pre>
+
+<div class="form-row mb-3">
+    <div class="form-group col-md-6">
+        <form asp-action="Index">
+            <div class="form-row">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <input asp-for="CNPJ" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="inputCNPJ">
+                        <input asp-for="RazaoSocial" class="form-control" placeholder="Nome" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-primary" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
+
+                        @if (Model.ListaEmpresas.Count() == 0)
+                        {
+                            <a href="@Url.Action("Create", "Empresa")" class="btn btn-outline-success" title="Adicionar Nova Pessoa"> + <i class="fa fa-user"></i></a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-group col-md-6">
+    </div>
+</div>
+<table class="table table-borderless bg-white">
+    <caption>Lista de empresas</caption>
+    <thead>
+        <tr class="border-bottom shadow-sm">
+            <th></th>
+            <th>
+                CNPJ
+            </th>
+
+            <th>
+                Nome Empresarial
+            </th>
+
+            <th>
+                E-mail
+            </th>
+
+            <th>
+                Telefone
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.ListaEmpresas)
+        {
+            <tr class="border-bottom">
+                <td>
+                    <a href="" class="btn btn-sm btn-secondary" title="Iniciar atendimento"><i class="far fa-clock"></i></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CNPJ)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome_Empresarial)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+
+                <td>
+                    <a href="@Url.Action("Details", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
+
+                    <a href="@Url.Action("Edit", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Alterar informações"><i class="far fa-edit"></i></a>
+
+                    <a href="@Url.Action("Delete", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Excluir informações"><i class="far fa-window-close"></i></a>
+                </td>
+                <!--
+                Html.ActionLink("Edit", "Edit", new { id = item.Pessoa_Id }) |
+                Html.ActionLink("Details", "Details", new { id = item.Pessoa_Id }) |
+                Html.ActionLink("Delete", "Delete", new { id = item.Pessoa_Id })-->
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/jquery.mask.min.js"></script>
+    <script>
+        $('#inputCNPJ').mask('00.000.000/0000-00', { placeholder: "__.___.___/____-__" });
+    </script>
+}

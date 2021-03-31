@@ -20,14 +20,19 @@ namespace Sim.Domain.SDE.Services
             _empresaRepository = empresaRepository;
         }
 
-        public IEnumerable<Empresa> Consulta_CNAE(string _cnae)
+        public IEnumerable<Empresa> ConsultaByCNAE(string cnae)
         {
-            return _empresaRepository.Consulta_CNAE(_cnae);
+            return _empresaRepository.ConsultaByCNAE(cnae);
         }
 
-        public IEnumerable<Empresa> Consulta_CNPJ(string _cnpj)
+        public IEnumerable<Empresa> ConsultaByCNPJ(string cnpj)
         {
-            return _empresaRepository.Consulta_CNPJ(_cnpj);
+            return _empresaRepository.ConsultaByCNPJ(cnpj);
+        }
+
+        public IEnumerable<Empresa> ConsultaByRazaoSocial(string name)
+        {
+            return _empresaRepository.ConsultaByRazaoSocial(name);
         }
     }
 }

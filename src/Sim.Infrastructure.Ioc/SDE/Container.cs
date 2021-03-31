@@ -32,6 +32,22 @@ namespace Sim.Infrastructure.IoC.SDE
 
             services.AddScoped<IRepositoryBase<Pessoa>, RepositoryBase<Pessoa>>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+            RegisterEmpresa(services);
+
+        }
+
+        private void RegisterEmpresa(IServiceCollection services)
+        {
+            //
+            services.AddScoped<IAppServiceBase<Empresa>, AppServiceBase<Empresa>>();
+            services.AddScoped<IEmpresaAppService, EmpresaAppService>();
+
+            services.AddScoped<IServiceBase<Empresa>, ServiceBase<Empresa>>();
+            services.AddScoped<IEmpresaService, EmpresaService>();
+
+            services.AddScoped<IRepositoryBase<Empresa>, RepositoryBase<Empresa>>();
+            services.AddScoped<IEmpresaRepository, EmpresaRepository>();
         }
 
     }

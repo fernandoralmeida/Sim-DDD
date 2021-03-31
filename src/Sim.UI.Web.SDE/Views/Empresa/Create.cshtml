@@ -1,0 +1,192 @@
+﻿@model Sim.UI.Web.SDE.ViewModels.VMEmpresa
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>VMEmpresa</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="form-floating mb-3" hidden>
+            <label asp-for="Empresa_Id" class="control-label"></label>
+            <input asp-for="Empresa_Id" class="form-control" />
+            <span asp-validation-for="Empresa_Id" class="text-danger"></span>
+        </div>
+
+        <div class="row g-2 mb-2">
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input asp-for="CNPJ" class="form-control" id="inputCNPJ" placeholder="CNPJ" />
+                    <label asp-for="CNPJ" for="inputCNPJ"></label>
+                    <span asp-validation-for="CNPJ" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input asp-for="Tipo" class="form-control" id="inputTipo" placeholder="Tipo" />
+                    <label asp-for="Tipo" for="inputTipo"></label>
+                    <span asp-validation-for="Tipo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input asp-for="Data_Abertura" class="form-control" id="inputAbertura" />
+                    <label asp-for="Data_Abertura" for="inputAbertura"></label>
+                    <span asp-validation-for="Data_Abertura" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-2 mb-2">
+            <div class="col-md">
+                <div class="form-floating col-md-12">
+                    <input asp-for="Nome_Empresarial" class="form-control" id="inputNome" placeholder="Nome Empresarial" />
+                    <label asp-for="Nome_Empresarial" for="inputNome"></label>
+                    <span asp-validation-for="Nome_Empresarial" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-2 mb-2">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input asp-for="Nome_Fantasia" class="form-control" id="inputFantasia" placeholder="Nome Fantasia" />
+                    <label asp-for="Nome_Fantasia" for="inputFantasia"></label>
+                    <span asp-validation-for="Nome_Fantasia" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input asp-for="Porte" class="form-control" id="inputPorte" placeholder="Porte"/>
+                    <label asp-for="Porte" for="inputPorte"></label>
+                    <span asp-validation-for="Porte" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-2 mb-2">
+            <div class="col-md-2">
+                <div class="form-floating">
+                    <input asp-for="CNAE_Principal" class="form-control" id="inputCNAE" placeholder="CNAE"/>
+                    <label asp-for="CNAE_Principal" for="inputCNAE"></label>
+                    <span asp-validation-for="CNAE_Principal" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input asp-for="Atividade_Principal" class="form-control" id="inputAtividade" placeholder="Atividade Principal"/>
+                    <label asp-for="Atividade_Principal" for="inputAtividade"></label>
+                    <span asp-validation-for="Atividade_Principal" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row g-2 mb-2">
+            <div class="col-md">
+                <div class="form-floating">
+                    <textarea asp-for="Atividade_Secundarias" class="form-control" id="inputSecundaria" placeholder="Atividade Secundaria"></textarea>
+                    <label asp-for="Atividade_Secundarias" for="inputSecundaria"></label>
+                    <span asp-validation-for="Atividade_Secundarias" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating">
+            <label asp-for="Natureza_Juridica"></label>
+            <input asp-for="Natureza_Juridica" class="form-control" />
+            <span asp-validation-for="Natureza_Juridica" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="CEP"></label>
+            <input asp-for="CEP" class="form-control" />
+            <span asp-validation-for="CEP" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Logradouro"></label>
+            <input asp-for="Logradouro" class="form-control" />
+            <span asp-validation-for="Logradouro" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Numero"></label>
+            <input asp-for="Numero" class="form-control" />
+            <span asp-validation-for="Numero" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Complemento"></label>
+            <input asp-for="Complemento" class="form-control" />
+            <span asp-validation-for="Complemento" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Bairro"></label>
+            <input asp-for="Bairro" class="form-control" />
+            <span asp-validation-for="Bairro" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Municipio"></label>
+            <input asp-for="Municipio" class="form-control" />
+            <span asp-validation-for="Municipio" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="UF"></label>
+            <input asp-for="UF" class="form-control" />
+            <span asp-validation-for="UF" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Telefone"></label>
+            <input asp-for="Telefone" class="form-control" />
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Ente_Federativo_Resp"></label>
+            <input asp-for="Ente_Federativo_Resp" class="form-control" />
+            <span asp-validation-for="Ente_Federativo_Resp" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Situacao_Cadastral"></label>
+            <input asp-for="Situacao_Cadastral" class="form-control" />
+            <span asp-validation-for="Situacao_Cadastral" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Data_Situacao_Cadastral"></label>
+            <input asp-for="Data_Situacao_Cadastral" class="form-control" />
+            <span asp-validation-for="Data_Situacao_Cadastral" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Motivo_Situacao_Cadastral"></label>
+            <input asp-for="Motivo_Situacao_Cadastral" class="form-control" />
+            <span asp-validation-for="Motivo_Situacao_Cadastral" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Situacao_Especial"></label>
+            <input asp-for="Situacao_Especial" class="form-control" />
+            <span asp-validation-for="Situacao_Especial" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Data_Situacao_Especial"></label>
+            <input asp-for="Data_Situacao_Especial" class="form-control" />
+            <span asp-validation-for="Data_Situacao_Especial" class="text-danger"></span>
+        </div>
+        <div class="form-floating">
+            <label asp-for="Capital_Social"></label>
+            <input asp-for="Capital_Social" class="form-control" />
+            <span asp-validation-for="Capital_Social" class="text-danger"></span>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+            <a asp-action="Index" role="button" type="button" class="btn btn-secondary">Voltar</a>
+            <button type="submit" role="button" class="btn btn-primary">Gravar</button>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
