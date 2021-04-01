@@ -38,7 +38,7 @@ namespace Sim.UI.Web.SDE.ViewModels
         public string Porte { get; set; }
 
         [Required(ErrorMessage = "CNAE requerido")]
-        [DisplayName("Código do CNAE")]
+        [DisplayName("CNAE")]
         public string CNAE_Principal { get; set; }
 
         [Required(ErrorMessage = "Atividade principal requerido")]

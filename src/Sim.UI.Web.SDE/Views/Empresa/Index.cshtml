@@ -21,13 +21,14 @@
             <div class="form-row">
                 <div class="form-group">
                     <div class="input-group mb-3">
+                        <input asp-for="CNPJRes" hidden>
                         <input asp-for="CNPJ" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="inputCNPJ">
                         <input asp-for="RazaoSocial" class="form-control" placeholder="Nome" aria-describedby="button-addon2">
                         <button class="btn btn-outline-primary" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
 
                         @if (Model.ListaEmpresas.Count() == 0)
                         {
-                            <a href="@Url.Action("Create", "Empresa")" class="btn btn-outline-success" title="Adicionar Nova Pessoa"> + <i class="fa fa-user"></i></a>
+                            <a href="@Url.Action("Create", "Empresa", new { id = Model.CNPJRes })" class="btn btn-outline-success" title="Adicionar Nova Empresa"> + <i class="fa fa-industry"></i></a>
                         }
                     </div>
                 </div>
