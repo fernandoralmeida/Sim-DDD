@@ -20,5 +20,7 @@ namespace Sim.UI.Web.SDE.ViewModels
 
         [TempData]
         public string StatusMessage { get; set; }
+
+        public string CNPJRes { get; set; }
     }
 }
