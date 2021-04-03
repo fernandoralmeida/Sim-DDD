@@ -20,8 +20,8 @@
         <form asp-action="Index">
             <div class="form-row">
                 <div class="form-group">
+                    <input asp-for="CNPJRes" hidden>
                     <div class="input-group mb-3">
-                        <input asp-for="CNPJRes" hidden>
                         <input asp-for="CNPJ" class="form-control" placeholder="CPF" aria-describedby="button-addon2" id="inputCNPJ">
                         <input asp-for="RazaoSocial" class="form-control" placeholder="Nome" aria-describedby="button-addon2">
                         <button class="btn btn-outline-primary" type="submit" role="button" id="button-addon2"><i class="fa fa-search"></i></button>
@@ -87,11 +87,11 @@
                 </td>
 
                 <td>
-                    <a href="@Url.Action("Details", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
+                    <a href="@Url.Action("Details", "Empresa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Detalhar informações"><i class="far fa-list-alt"></i></a>
 
-                    <a href="@Url.Action("Edit", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Alterar informações"><i class="far fa-edit"></i></a>
+                    <a href="@Url.Action("Edit", "Empresa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Alterar informações"><i class="far fa-edit"></i></a>
 
-                    <a href="@Url.Action("Delete", "Pessoa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Excluir informações"><i class="far fa-window-close"></i></a>
+                    <a href="@Url.Action("Delete", "Empresa", new { id = item.Empresa_Id })" class="btn btn-sm btn-secondary" title="Excluir informações"><i class="far fa-window-close"></i></a>
                 </td>
                 <!--
                 Html.ActionLink("Edit", "Edit", new { id = item.Pessoa_Id }) |

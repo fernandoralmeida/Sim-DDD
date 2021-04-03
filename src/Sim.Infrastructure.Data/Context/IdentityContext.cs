@@ -10,7 +10,10 @@ namespace Sim.Infrastructure.Data.Context
     {
         public IdentityContext(DbContextOptions<IdentityContext> options)
             :base(options)
-        { }
+        {
+            //this.Database.Migrate();      
+        
+        }
 
         public DbSet<Usuario> Usuarios { get; set; }
 

@@ -70,64 +70,98 @@ namespace Sim.UI.Web.SDE.Controllers
 
         public string Remove(string valor)
         {
-            var str = valor;
-            str = new string((from c in str
-                              where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c)
-                              select c
-                   ).ToArray());
+           try
+            {
+                var str = valor;
+                str = new string((from c in str
+                                  where char.IsWhiteSpace(c) || char.IsLetterOrDigit(c)
+                                  select c
+                       ).ToArray());
 
-            return str;
+                return str;
+            }
+            catch
+            {
+                return valor;
+            }
+
         }
 
         // GET: EmpresaController/Create
         public ActionResult Create(string id)
         {
             var obj = new VMEmpresa();
+              
+            try
+            {               
+                
+                var t = Task.Run(() => {
 
-            var cnpjR = new CNPJResult();
+                    var cnpjR = new CNPJResult();
 
-            if (_index.CNPJ != null || _index.CNPJ != string.Empty)
-            {
-                var t = serviceCNPJ.ConsultarCPNJAsync(Remove(id));
+                    if (_index.CNPJ != null || _index.CNPJ != string.Empty)
+                    {
+                        var ss = serviceCNPJ.ConsultarCPNJAsync(Remove(id));
+
+                        ss.Wait();
+
+                        cnpjR = ss.Result;
+
+                        obj.CNPJ = cnpjR.Cnpj;
+                        obj.Nome_Empresarial = cnpjR.Nome;
+                        obj.Tipo = cnpjR.Tipo;
+                        obj.Nome_Fantasia = cnpjR.Fantasia;
+                        obj.Data_Abertura = Convert.ToDateTime(cnpjR.Abertura);
+
+                        StringBuilder sb = new StringBuilder();
+
+                        foreach (var a in cnpjR.AtividadePrincipal)
+                        {
+                            sb.AppendLine(string.Format("{0} - {1}", a.Code, a.Text));
+                        }
+
+                        obj.Atividade_Principal = sb.ToString();
+                        obj.CNAE_Principal = cnpjR.AtividadePrincipal[0].Code;
+
+                        foreach (var s in cnpjR.AtividadesSecundarias)
+                        {
+                            if (s.Text.ToLower() != "não informada")
+                                sb.AppendLine(string.Format("{0} - {1}", s.Code, s.Text));
+                        }
+
+                        obj.Atividade_Secundarias = sb.ToString();
+                        obj.CEP = cnpjR.Cep;
+                        obj.Logradouro = cnpjR.Logradouro;
+                        obj.Numero = cnpjR.Numero;
+                        obj.Bairro = cnpjR.Bairro;
+                        obj.Municipio = cnpjR.Municipio;
+                        obj.UF = cnpjR.Uf;
+                        obj.Email = cnpjR.Email;
+                        obj.Situacao_Cadastral = cnpjR.Situacao;
+                        obj.Data_Situacao_Cadastral = Convert.ToDateTime(cnpjR.DataSituacao);
+                        obj.Capital_Social = cnpjR.CapitalSocial;
+                        obj.Situacao_Especial = cnpjR.SituacaoEspecial;
+                        //obj.Data_Situacao_Especial = Convert.ToDateTime(cnpjR.DataSituacaoEspecial);
+                        obj.Ente_Federativo_Resp = cnpjR.Efr;
+                        obj.Natureza_Juridica = cnpjR.NaturezaJuridica;
+                        obj.Porte = cnpjR.Status;
+                        obj.Telefone = cnpjR.Telefone;
+
+                    }
+
+
+                });
 
                 t.Wait();
 
-                cnpjR = t.Result;
-
-                obj.CNPJ = cnpjR.Cnpj;
-                obj.Nome_Empresarial = cnpjR.Nome;
-                obj.Tipo = cnpjR.Tipo;
-                obj.Nome_Fantasia = cnpjR.Fantasia;
-                obj.Data_Abertura = Convert.ToDateTime(cnpjR.Abertura);
-
-                StringBuilder sb = new StringBuilder();
-
-                foreach (var a in cnpjR.AtividadePrincipal)
-                {
-                    sb.AppendLine(string.Format("{0} - {1}", a.Code, a.Text));
-                }
-
-                obj.Atividade_Principal = sb.ToString();
-
-                foreach (var s in cnpjR.AtividadesSecundarias)
-                {
-                    if (s.Text.ToLower() != "não informada")
-                        sb.AppendLine(string.Format("{0} - {1}", s.Code, s.Text));
-                }
-
-                obj.Atividade_Secundarias = sb.ToString();
-                obj.CEP = cnpjR.Cep;
-                obj.Logradouro = cnpjR.Logradouro;
-                obj.Numero = cnpjR.Numero;
-                obj.Bairro = cnpjR.Bairro;
-                obj.Municipio = cnpjR.Municipio;
-                obj.UF = cnpjR.Uf;
-                obj.Email = cnpjR.Email;
-                obj.Data_Situacao_Cadastral = Convert.ToDateTime(cnpjR.DataSituacao);
-
+                return View(obj);
+            }
+            catch(Exception ex)
+            {
+                obj.StatusMessage = ex.Message;
+                return View(obj);
             }
 
-            return View(obj);
         }
 
         // POST: EmpresaController/Create
@@ -137,7 +171,9 @@ namespace Sim.UI.Web.SDE.Controllers
         {
             try
             {
-               
+                var _empresa = _mapper.Map<Empresa>(collection);
+
+                _empresaAppService.Add(_empresa);
                 return RedirectToAction(nameof(Index));
             }
             catch

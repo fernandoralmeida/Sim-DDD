@@ -13,7 +13,10 @@ namespace Sim.Infrastructure.Data.Context
     public class DbContextSDE : DbContext
     {
 
-        public DbContextSDE(DbContextOptions<DbContextSDE> options) :base(options) { }
+        public DbContextSDE(DbContextOptions<DbContextSDE> options) :base(options)
+        {
+            //this.Database.Migrate(); 
+        }
 
         public DbSet<Pessoa> SDE_Pessoas { get; set; }
         

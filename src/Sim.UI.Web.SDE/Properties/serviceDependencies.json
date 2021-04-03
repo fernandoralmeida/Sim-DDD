@@ -1,15 +1,3 @@
 {
-  "dependencies": {
-    "secrets1": {
-      "type": "secrets"
-    },
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "Sim-DataBaseSDE"
-    },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "Sim-DataBaseIdentity"
-    }
-  }
+  "dependencies": {}
 }

@@ -79,7 +79,6 @@ namespace Sim.UI.Web.SDE.ViewModels
         [DisplayName("Estado")]
         public string UF { get; set; }
 
-        [Required(ErrorMessage = "Email requerido")]
         [DisplayName("E-mail")]
         public string Email { get; set; }
 
@@ -108,10 +107,13 @@ namespace Sim.UI.Web.SDE.ViewModels
         public DateTime Data_Situacao_Especial { get; set; }
 
         [DataType(DataType.Currency)]
-        [DisplayName("Data da Situação Especial")]
+        [DisplayName("Capital Social")]
         public string Capital_Social { get; set; }
 
         //Registros relacionais
         public virtual IEnumerable<VMEmpresaQsa> QSA { get; set; }
+
+        [TempData]
+        public string StatusMessage { get; set; }
     }
 }
