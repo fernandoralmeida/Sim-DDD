@@ -9,6 +9,9 @@ namespace Sim.Infrastructure.IoC.Identity
 
     using Sim.Infrastructure.Data.Context;
     using Sim.Infrastructure.Identity.Entity;
+    using Sim.Infrastructure.Identity.Interface;
+    using Sim.Infrastructure.Data.Repositories.Identity;
+
     public class Container
     {
         public void RegisterServices(IServiceCollection services, IConfiguration config, string connection)
@@ -22,7 +25,11 @@ namespace Sim.Infrastructure.IoC.Identity
 
             //registra o dbcontext padrão do identity
             services.AddDefaultIdentity<Usuario>()
-                            .AddEntityFrameworkStores<IdentityContext>();
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<IdentityContext>();       
+                                    
+            //registra automapper identity
+            RegisterUsuario(services);
 
             //configura o identity
             services.Configure<IdentityOptions>(options => {
@@ -49,6 +56,11 @@ namespace Sim.Infrastructure.IoC.Identity
                 options.Lockout.MaxFailedAccessAttempts = 5;
 
             });
+        }
+
+        private void RegisterUsuario(IServiceCollection services)
+        {
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

@@ -25,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sim.Application.Identity\Sim.Application.Identity.csproj" />
     <ProjectReference Include="..\Sim.Application.SDE\Sim.Application.SDE.csproj" />
     <ProjectReference Include="..\Sim.Domain.SDE\Sim.Domain.SDE.csproj" />
     <ProjectReference Include="..\Sim.Infrastructure.Identity\Sim.Infrastructure.Identity.csproj" />
@@ -33,9 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Administrador\Controllers\" />
     <Folder Include="Areas\Administrador\Data\" />
-    <Folder Include="Areas\Administrador\Views\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

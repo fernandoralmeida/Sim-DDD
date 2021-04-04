@@ -1,0 +1,31 @@
+﻿@using Sim.UI.Web.SDE.Areas.Administrador.ViewModels
+@using Sim.UI.Web.SDE.Areas.Administrador.Views.Home
+@model VMRoleClaims
+@{
+    Layout = "_Layout.cshtml";
+
+    ViewData["Title"] = "Claims";
+    ViewData["ActivePage"] = AdminNavPages.Claims;
+}
+
+<h4>Gerenciar Claims</h4>
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Claims" method="post">
+            <div class="row g-3">
+                <!----><div asp-validation-summary="All" class="text-danger"></div>
+                <div class="col-md-12">
+                    <label asp-for="ClaimType" class="form-label"></label>
+                    <input asp-for="ClaimType" class="form-control" />
+                    <span asp-validation-for="ClaimType" class="text-danger"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr/>
+
+
+</div>

@@ -1,0 +1,62 @@
+﻿@using Sim.UI.Web.SDE.Areas.Administrador.Views.Home
+@model Sim.UI.Web.SDE.Areas.Administrador.ViewModels.VMRegister
+@{ Layout = "_Layout.cshtml";
+
+  ViewData["Title"] = "Contas";
+  ViewData["ActivePage"] = AdminNavPages.Register;
+
+}
+<h4>Novo Usuário</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="row">
+    <form class="col-md-5" asp-action="Register" method="post">
+        <div class="row g-3">
+            <!----><div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-md-12">
+                <label asp-for="UserName" class="form-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="col-md-5">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-7">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-12">
+                <label asp-for="Genero" class="form-label"></label>
+                <select asp-for="Genero" class="form-select">
+                    <option selected></option>
+                    <option>Feminino</option>
+                    <option>Masculino</option>
+                </select>
+                <span asp-validation-for="Genero" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="col-md-10">
+                <button type="submit" class="btn btn-primary col-md-4">Registrar</button>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -23,6 +23,12 @@ namespace Sim.Infrastructure.IoC.SDE
             services.AddDbContext<DbContextSDE>(options => options.UseSqlServer(config
                 .GetConnectionString(connection)));
 
+            RegisterPessoa(services);
+            RegisterEmpresa(services);
+        }
+
+        private void RegisterPessoa(IServiceCollection services)
+        {
             //registra o aplicação, dominio, repositorio aos serviços.
             services.AddScoped<IAppServiceBase<Pessoa>, AppServiceBase<Pessoa>>();
             services.AddScoped<IPessoaAppService, PessoaAppService>();
@@ -32,9 +38,6 @@ namespace Sim.Infrastructure.IoC.SDE
 
             services.AddScoped<IRepositoryBase<Pessoa>, RepositoryBase<Pessoa>>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
-
-            RegisterEmpresa(services);
-
         }
 
         private void RegisterEmpresa(IServiceCollection services)

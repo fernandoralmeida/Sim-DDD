@@ -7,7 +7,9 @@ using AutoMapper;
 namespace Sim.UI.Web.SDE.AutoMapper
 {    
     using ViewModels;
-    using Sim.Domain.SDE.Entities; 
+    using Sim.Domain.SDE.Entities;
+    using Sim.Infrastructure.Identity.Entity;
+    using Areas.Administrador.ViewModels;
     
     public class AutoMapperProfile : Profile
     {

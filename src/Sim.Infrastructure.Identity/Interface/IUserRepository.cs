@@ -12,5 +12,6 @@ namespace Sim.Infrastructure.Identity.Interface
         Usuario GetById(string id);
         IEnumerable<Usuario> GetAll();
         void Unlock(string id);
+
     }
 }

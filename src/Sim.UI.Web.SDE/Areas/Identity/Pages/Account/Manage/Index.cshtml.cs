@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Sim.UI.Web.SDE.Areas.Identity.Pages.Account.Manage
 {
-    using Sim.Application.Identity;
+
     using Sim.Infrastructure.Identity.Entity;
     public partial class IndexModel : PageModel
     {

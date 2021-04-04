@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +8,20 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.ViewModels
 {
     public class VMRoles
     {
+
+        public VMRoles() { Id = new Guid(); }
+
         public Guid Id { get; set; }
 
+        [DisplayName("Role Name")]
         public string Name { get; set; }
 
         public string NormalizedName { get; set; }
 
         public string ConcurrencyStamp { get; set; }
+
+        public string StatusMessage { get; set; }
+
+        public IEnumerable<string> Roles { get; set; }
     }
 }

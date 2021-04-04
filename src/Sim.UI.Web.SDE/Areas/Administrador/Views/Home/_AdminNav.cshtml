@@ -1,0 +1,11 @@
+﻿@using Sim.Infrastructure.Identity.Entity
+@using Sim.UI.Web.SDE.Areas.Administrador.Views.Home
+@inject SignInManager<Usuario> SignInManager
+
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @AdminNavPages.IndexNavClass(ViewContext)" id="lusers" asp-action="Index">Usuários</a></li>
+    <li class="nav-item"><a class="nav-link @AdminNavPages.RegisterNavClass(ViewContext)" id="regs" asp-action="Register">Novo Usuário</a></li>
+    <li class="nav-item"><a class="nav-link @AdminNavPages.RolesNavClass(ViewContext)" id="roles" asp-action="Roles">Roles</a></li>
+    <li class="nav-item"><a class="nav-link @AdminNavPages.ClaimsNavClass(ViewContext)" id="claims" asp-action="Claims">Claims</a></li>
+
+</ul>

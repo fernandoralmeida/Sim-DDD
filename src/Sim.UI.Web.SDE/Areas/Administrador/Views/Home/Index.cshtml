@@ -1,0 +1,75 @@
+﻿
+@using Sim.UI.Web.SDE.Areas.Administrador.ViewModels
+@using Sim.UI.Web.SDE.Areas.Administrador.Views.Home
+@model VMListUsers
+@{
+    Layout = "_Layout.cshtml";
+
+    ViewData["Title"] = "Contas";
+    ViewData["ActivePage"] = AdminNavPages.Index;
+}
+
+<h4>Usuários</h4>
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<div class="row">
+    
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    User Name
+                </th>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Email Confirmado
+                </th>
+                <th>
+                    Bloqueado
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Users)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LockoutEnabled)
+                </td>
+                <td>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Admin", new { id = item.Id })" class="btn btn-xs btn-info" title="Exibir detalhes"><i class="glyphicon glyphicon-list-alt"></i></a>
+                    <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" class="btn btn-xs btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE.Areas.Administrador.ViewModels
 {
+    using Sim.Infrastructure.Identity.Entity;
     public class VMListUsers
     {
-        [DisplayName("Username")]
+        [DisplayName("Procurar por Id")]
         public string GetUserName { get; set; }
 
-        public IEnumerable<VMUsers> Users { get; set; }
+        public IEnumerable<Usuario> Users { get; set; }
 
         [TempData]
         public string StatusMessage { get; set; }

@@ -26,20 +26,21 @@ namespace Sim.Infrastructure.Data.Repositories.Identity
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<Usuario> GetAll()
-        {
-            return _db.Usuarios.ToList();
-        }
-        
-        public Usuario GetById(string id)
-        {
-            return _db.Usuarios.Find(id);
-        }
-
         public void Unlock(string id)
         {
             _db.Usuarios.Find(id).LockoutEnabled = false;
             _db.SaveChanges();
         }
+
+        public IEnumerable<Usuario> GetAll()
+        {
+            return _db.Usuarios.ToList();
+        }
+
+        public Usuario GetById(string id)
+        {
+            return _db.Usuarios.Find(id);
+        }
+
     }
 }

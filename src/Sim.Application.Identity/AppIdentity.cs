@@ -8,26 +8,24 @@ namespace Sim.Application.Identity
 {
     using Sim.Infrastructure.Identity.Entity;
     using Sim.Infrastructure.Identity.Interface;
-    public class AppIdentity<TEntity> : IDisposable, IUserRepository where TEntity : class
+    public class AppIdentity<TEntity> : IDisposable, IAppIdentity<TEntity> where TEntity : class
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository<TEntity> _userRepository;
 
-        public AppIdentity(IUserRepository userRepository)
+        public AppIdentity(IUserRepository<TEntity> userRepository)
         {
             _userRepository = userRepository;
         }
 
         public void Dispose()
+        {        }
+
+        public IEnumerable<TEntity> GetAll()
         {
-            _userRepository.Dispose();
+            return _userRepository.GetAll();
         }
 
-        public IEnumerable<Usuario> GetAll()
-        {
-            return _userRepository.GetAll().AsEnumerable();
-        }
-
-        public Usuario GetById(string id)
+        public TEntity GetById(string id)
         {
             return _userRepository.GetById(id);
         }
