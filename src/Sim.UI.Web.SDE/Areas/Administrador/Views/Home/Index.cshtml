@@ -13,11 +13,11 @@
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 
-<div class="row">
+<div>
     
-    <table class="table table-hover table-responsive">
+    <table class="table table-borderless bg-white">
         <thead>
-            <tr>
+            <tr class="border-bottom shadow-sm">
                 <th>
                     User Name
                 </th>
@@ -40,7 +40,7 @@
         <tbody>
             @foreach (var item in Model.Users)
             {
-            <tr>
+            <tr class="border-bottom">
                 <td>
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
@@ -60,8 +60,8 @@
                 <td>
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Admin", new { id = item.Id })" class="btn btn-xs btn-info" title="Exibir detalhes"><i class="glyphicon glyphicon-list-alt"></i></a>
-                    <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" class="btn btn-xs btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="@Url.Action("UserRoles", "Manager", new { id = item.Id })" class="btn btn-sm btn-info" title="Editar"><i class="far fa-edit"></i></a>
+                    <a href="@Url.Action("Edit", "Admin", new { id = item.Id })" class="btn btn-sm btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
                 </td>
             </tr>
             }

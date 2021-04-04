@@ -12,50 +12,54 @@
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 
-<div class="row">
-    <div class="col-md-5">
+<div>
+    <div class="col-md-5 mb-3">
         <form asp-action="Roles" method="post">
             <div class="row g-3">
-                <div class="col-md-12">
-                    <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="d-grid gap-2 d-md-block">
-                    <button class="btn btn-primary" type="submit">Gravar</button>
+                <div class="input-group mb-3">
+                    <input asp-for="Name" class="form-control" placeholder="Nova Role" />
+                    <button class="btn btn-primary" type="submit">Adicionar</button>                    
                 </div>
             </div>
         </form>
     </div>
-    <hr />
+    <p></p>
     <div class="col-md">
         <div class="row g-3">
-            <table class="table table-hover table-responsive">
+            <table class="table table-borderless bg-white">
                 <thead>
-                    <tr>
+                    <tr class="border-bottom shadow-sm">
                         <th>
                             Role Name
+                        </th>
+                        <th>
+                            Role Id
                         </th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach (var item in Model.Roles)
+                <tbody>    
+                    @if (Model.Roles != null)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item)
-                            </td>
-                            
-                            <td>
-                            </td>
+                        foreach (var item in Model.Roles)
+                        {
+                    <tr class="border-bottom">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
 
-                            <td>
-                                <a href="@Url.Action("Details", "Admin", new { id = item })" class="btn btn-xs btn-info" title="Exibir detalhes"><i class="glyphicon glyphicon-list-alt"></i></a>
-                                <a href="@Url.Action("Edit", "Admin", new { id = item })" class="btn btn-xs btn-warning" title="Editar"><i class="glyphicon glyphicon-pencil"></i></a>
-                            </td>
-                        </tr>
+                        <td>
+                        </td>
+
+                        <td>
+                            <a href="@Url.ActionLink("DeleteRole", "Home", new { id = item.Id })" class="btn btn-sm btn-danger" title="Excluir Role"><i class="far fa-window-close"></i></a>
+                        </td>
+                    </tr>
+                        }
                     }
                 </tbody>
             </table>

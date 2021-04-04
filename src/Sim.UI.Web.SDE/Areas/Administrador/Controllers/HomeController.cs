@@ -9,7 +9,9 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Microsoft.Extensions.Logging;
+    using Sim.Infrastructure.Data.Context;
     using Sim.Infrastructure.Identity.Entity;
     using Sim.Infrastructure.Identity.Interface;
     using ViewModels;
@@ -22,10 +24,14 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
         private VMListUsers _index = new VMListUsers();
+        private VMRegister _register = new VMRegister();
         private VMRoles _roles = new VMRoles();
         private readonly IUserRepository _appIdentity;
 
-        public HomeController(IUserRepository appIdentity, UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, RoleManager<IdentityRole> roleManager)
+        public HomeController(IUserRepository appIdentity,
+            UserManager<Usuario> userManager, 
+            SignInManager<Usuario> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _appIdentity = appIdentity;
             _userManager = userManager;
@@ -35,13 +41,15 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
 
         public IActionResult Index()
         {           
-            _index.Users = _appIdentity.GetAll();                
+            _index.Users = _appIdentity.GetAll();     
             return View(_index);
         }
 
         public IActionResult Roles()
         {
-            return View();
+
+            _roles.Roles = _roleManager.Roles;
+            return View(_roles);
         }
 
         [HttpPost]
@@ -59,18 +67,13 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
 
                     if(roleresult.IsCompletedSuccessfully)
                     {
-                        foreach(IdentityRole role_string in _roleManager.Roles.ToList())
-                        {
-                            _roles.Roles.Append(role_string.Name);
-                        }
-
-                        collection.Roles = _roles.Roles;
-
+                        collection.Roles = _roleManager.Roles;
+                        collection.Name = string.Empty;
                         return View(collection);
                     }
-                    return View();
+                    return View(collection);
                 }
-                return View();
+                return View(collection);
             }
             catch(Exception ex)
             {
@@ -79,14 +82,53 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
             }            
         }
 
+        public IActionResult DeleteRole(string id)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    var role =  _roleManager.FindByIdAsync(id);
+
+                    role.Wait();
+
+                    if (role == null)
+                        return RedirectToAction(nameof(Roles));
+
+                    IdentityResult identityResult;
+
+                    var delete = _roleManager.DeleteAsync(role.Result);
+
+                    delete.Wait();
+
+                    identityResult = delete.Result;
+
+                    if (!identityResult.Succeeded)
+                    {
+                        _roles.StatusMessage = identityResult.Errors.First().ToString();
+                        return RedirectToAction(nameof(Roles));
+                    }
+                    return RedirectToAction(nameof(Roles));
+                    
+                }
+
+                return RedirectToAction(nameof(Roles));
+            }
+            catch(Exception ex)
+            {
+                _roles.StatusMessage = ex.Message;
+                return RedirectToAction(nameof(Roles));
+            }
+        }
+
         public IActionResult Claims()
         {
-            return View(_index);
+            return View();
         }
 
         public IActionResult Register()
         {
-            return View(_index);
+            return View(_register);
         }
 
         [HttpPost]

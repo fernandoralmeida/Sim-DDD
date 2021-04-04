@@ -17,5 +17,8 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.ViewModels
 
         [DisplayName("Claim Valor")]
         public string ClaimValue{ get; set; }
+
+        public string StatusMessage { get; set; }
+
     }
 }

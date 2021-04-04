@@ -1,0 +1,116 @@
+﻿@model Sim.UI.Web.SDE.Areas.Administrador.ViewModels.VMUserRoles
+
+@{
+    ViewData["Title"] = "UserRoles";
+}
+
+<h1>UserRoles</h1>
+
+<div>
+    <h4>VMUserRoles</h4>
+    <hr />
+    
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                Identificador
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+            <dt class="col-sm-2">
+                Nome
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                Genero
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+        <div class="row">
+
+            <table class="table table-borderless bg-white">
+                <thead>
+                    <tr class="border-bottom shadow-sm">
+                        <th>
+                            Role Name
+                        </th>
+                        <th>
+                            Role Id
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ListRoles != null)
+                    {
+
+                        if (Model.ListRoles.Count > 1)
+                        {
+                            foreach (var item in Model.ListRoles)
+                            {
+                                <tr class="border-bottom">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <a href="@Url.ActionLink("AddUserRoles", "Manager", new { x = Model.Id, y = item.Name })" class="btn btn-sm btn-outline-info" title="Incluir Role"><i class="fas fa-plus-square"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in Model.ListRoles)
+                            {
+                                <tr class="border-bottom">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <a href="@Url.ActionLink("RemoveUserRoles", "Manager", new { x = Model.Id, y = item.Name })" class="btn btn-sm btn-outline-danger" title="Excluir Role"><i class="fas fa-minus-square"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-controller="Home" asp-action="Index">Back to List</a>
+</div>
