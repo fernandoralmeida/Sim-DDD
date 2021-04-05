@@ -84,6 +84,7 @@ namespace Sim.UI.Web.SDE
                 endpoints.MapRazorPages();
                 
             });
+
         }
     }
 }

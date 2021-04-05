@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sim.Infrastructure.Data.Context;
 
-namespace Sim.Infrastructure.Data.Migrations
+namespace Sim.Infrastructure.Data.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20210324022958_identity-02")]
-    partial class identity02
+    [Migration("20210405003952_idt01")]
+    partial class idt01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,15 @@ namespace Sim.Infrastructure.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "2c5e174e-3b0e-446f-86af-483d56fd7210",
+                            ConcurrencyStamp = "da380e89-af5b-4d69-a97f-6e7d0c2a2cbd",
+                            Name = "Administrador",
+                            NormalizedName = "ADMINISTRADOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -207,6 +216,13 @@ namespace Sim.Infrastructure.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "8e445865-a24d-4543-a6c6-9443d048cdb9",
+                            RoleId = "2c5e174e-3b0e-446f-86af-483d56fd7210"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -234,7 +250,7 @@ namespace Sim.Infrastructure.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Genero")
+                    b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -248,6 +264,28 @@ namespace Sim.Infrastructure.Data.Migrations
                     b.ToTable("AspNetUsers");
 
                     b.HasDiscriminator().HasValue("Usuario");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "117ae2f8-3160-4041-8111-c85220f0306b",
+                            Email = "sim@sim.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SIM@SIM.COM",
+                            NormalizedUserName = "OWNER",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOjdSNL8duLWoY4V/E32o2LIcop8+I3vRsroVVld8uLDqkCXRV7z31UiFetbjEyYCQ==",
+                            PhoneNumber = "+111111111111",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "e8b6ecc3-f20a-437e-9443-0e00b3a960ca",
+                            TwoFactorEnabled = false,
+                            UserName = "Owner",
+                            Gender = "Masculino",
+                            LastName = "Web",
+                            Name = "Sim"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

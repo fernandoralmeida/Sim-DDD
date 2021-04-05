@@ -28,9 +28,15 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Empresa" asp-action="Index">Empresas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrador" asp-controller="Home" asp-action="Index">Área Administrativa</a>
-                        </li>
+
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Administrador" asp-controller="Home" asp-action="Index">Administrativo</a>
+                            </li>
+                        }
+
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

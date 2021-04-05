@@ -16,7 +16,7 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
     using Sim.Infrastructure.Identity.Interface;
     using ViewModels;
 
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     [Area("Administrador")]
     public class HomeController : Controller
     {
@@ -123,7 +123,7 @@ namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
 
         public IActionResult Claims()
         {
-            return View();
+            return View(new VMRoleClaims());
         }
 
         public IActionResult Register()

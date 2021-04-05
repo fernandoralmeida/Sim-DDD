@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sim.Infrastructure.Data.Context;
 
-namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
+namespace Sim.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DbContextSDE))]
     partial class DbContextSDEModelSnapshot : ModelSnapshot
@@ -59,7 +59,6 @@ namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Data_Situacao_Especial")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

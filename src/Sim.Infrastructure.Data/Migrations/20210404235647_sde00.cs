@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
+namespace Sim.Infrastructure.Data.Migrations
 {
     public partial class sde00 : Migration
     {
@@ -37,7 +37,7 @@ namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
                     Data_Situacao_Cadastral = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Motivo_Situacao_Cadastral = table.Column<string>(type: "varchar(50)", nullable: true),
                     Situacao_Especial = table.Column<string>(type: "varchar(50)", nullable: true),
-                    Data_Situacao_Especial = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Data_Situacao_Especial = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Capital_Social = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>

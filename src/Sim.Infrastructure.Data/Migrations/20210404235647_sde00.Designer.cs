@@ -7,10 +7,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sim.Infrastructure.Data.Context;
 
-namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
+namespace Sim.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DbContextSDE))]
-    [Migration("20210321202915_sde-00")]
+    [Migration("20210404235647_sde00")]
     partial class sde00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,7 +61,6 @@ namespace Sim.Infrastructure.Data.Migrations.DbContextSDEMigrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Data_Situacao_Especial")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

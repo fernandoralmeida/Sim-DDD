@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sim.Infrastructure.Data.Context;
 
-namespace Sim.Infrastructure.Data.Migrations
+namespace Sim.Infrastructure.Data.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20210321202604_identity-00")]
-    partial class identity00
+    [Migration("20210404235725_idt00")]
+    partial class idt00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,7 +234,10 @@ namespace Sim.Infrastructure.Data.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Genero")
+                    b.Property<string>("Gender")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

@@ -88,7 +88,7 @@ namespace Sim.Infrastructure.Data.EntityConfig.SDE
             builder.Property(c => c.Situacao_Especial)
                 .HasColumnType("varchar(50)");
 
-            builder.Property(c => c.Data_Situacao_Especial).IsRequired();
+            builder.Property(c => c.Data_Situacao_Especial);
 
             builder.Property(c => c.Capital_Social)
                 .HasColumnType("decimal");

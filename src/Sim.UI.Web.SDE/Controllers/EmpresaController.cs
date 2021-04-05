@@ -18,6 +18,7 @@ namespace Sim.UI.Web.SDE.Controllers
     using Sim.Application.SDE;
     using System.Text;
 
+    [Authorize]
     public class EmpresaController : Controller
     {
         private readonly IEmpresaAppService _empresaAppService;

@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE.Areas.Administrador.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using ViewModels;
 
+    [Authorize(Roles = "Administrador")]
     [Area("Administrador")]
     public class ManagerController : Controller
     {

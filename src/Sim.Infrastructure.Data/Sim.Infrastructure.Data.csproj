@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Sim.Infrastructure.Identity\Sim.Infrastructure.Identity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
