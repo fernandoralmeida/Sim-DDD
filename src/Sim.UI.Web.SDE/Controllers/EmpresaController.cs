@@ -142,7 +142,11 @@ namespace Sim.UI.Web.SDE.Controllers
                         obj.Data_Situacao_Cadastral = Convert.ToDateTime(cnpjR.DataSituacao);
                         obj.Capital_Social = cnpjR.CapitalSocial;
                         obj.Situacao_Especial = cnpjR.SituacaoEspecial;
-                        //obj.Data_Situacao_Especial = Convert.ToDateTime(cnpjR.DataSituacaoEspecial);
+
+                        DateTime temp;
+                        if(DateTime.TryParse(cnpjR.DataSituacaoEspecial, out temp))
+                            obj.Data_Situacao_Especial = Convert.ToDateTime(cnpjR.DataSituacaoEspecial);
+
                         obj.Ente_Federativo_Resp = cnpjR.Efr;
                         obj.Natureza_Juridica = cnpjR.NaturezaJuridica;
                         obj.Porte = cnpjR.Status;

@@ -1,13 +1,13 @@
 ﻿@model Sim.UI.Web.SDE.Areas.Administrador.ViewModels.VMUserRoles
 
 @{
-    ViewData["Title"] = "UserRoles";
+    ViewData["Title"] = "Roles";
 }
 
-<h1>UserRoles</h1>
+<h5>Controle de Acessos</h5>
 
 <div>
-    <h4>VMUserRoles</h4>
+    <h6>Usuário</h6>
     <hr />
     
         <dl class="row">
@@ -110,7 +110,6 @@
         </div>
     
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-controller="Home" asp-action="Index">Back to List</a>
+<div class="row g-3 mb-3">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-secondary">Voltar</a>
 </div>

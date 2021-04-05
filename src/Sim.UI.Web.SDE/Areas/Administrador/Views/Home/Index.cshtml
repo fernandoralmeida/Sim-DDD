@@ -9,7 +9,7 @@
     ViewData["ActivePage"] = AdminNavPages.Index;
 }
 
-<h4>Usuários</h4>
+<h5>Usuários</h5>
 
 <partial name="_StatusMessage" model="Model.StatusMessage" />
 
@@ -60,7 +60,7 @@
                 <td>
                 </td>
                 <td>
-                    <a href="@Url.Action("UserRoles", "Manager", new { id = item.Id })" class="btn btn-sm btn-info" title="Editar"><i class="far fa-edit"></i></a>
+                    <a href="@Url.Action("UserRoles", "Manager", new { id = item.Id })" class="btn btn-sm btn-outline-info" title="Editar"><i class="far fa-edit"></i></a>
                 </td>
             </tr>
             }
