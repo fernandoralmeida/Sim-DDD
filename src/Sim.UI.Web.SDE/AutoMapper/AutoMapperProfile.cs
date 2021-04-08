@@ -23,6 +23,9 @@ namespace Sim.UI.Web.SDE.AutoMapper
 
             CreateMap<Empresa_QSA, VMEmpresaQsa>();
             CreateMap<VMEmpresaQsa, Empresa_QSA>().ReverseMap();
+
+            CreateMap<Atendimento, VMAtendimento>();
+            CreateMap<VMAtendimento, Atendimento>().ReverseMap();
         }
     }
 }

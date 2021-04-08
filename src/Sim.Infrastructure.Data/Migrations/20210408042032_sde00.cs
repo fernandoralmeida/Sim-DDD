@@ -8,6 +8,32 @@ namespace Sim.Infrastructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Atendimento",
+                columns: table => new
+                {
+                    Atendimento_Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Protocolo = table.Column<int>(type: "int", nullable: false),
+                    Data = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Inicio = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Fim = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Pessoa_Id = table.Column<int>(type: "int", nullable: false),
+                    Empresa_Id = table.Column<int>(type: "int", nullable: false),
+                    Setor = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Canal = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Servicos = table.Column<string>(type: "varchar(150)", nullable: true),
+                    Descricao = table.Column<string>(type: "varchar(150)", nullable: true),
+                    Status = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Data_Alteracao = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    Usuario_Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Atendimento", x => x.Atendimento_Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Empresa",
                 columns: table => new
                 {
@@ -101,6 +127,12 @@ namespace Sim.Infrastructure.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Atendimento_Protocolo",
+                table: "Atendimento",
+                column: "Protocolo",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Empresa_CNPJ",
                 table: "Empresa",
                 column: "CNPJ",
@@ -120,6 +152,9 @@ namespace Sim.Infrastructure.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Atendimento");
+
             migrationBuilder.DropTable(
                 name: "EmpresaQsa");
 

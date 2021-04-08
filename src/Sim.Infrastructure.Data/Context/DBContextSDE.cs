@@ -23,6 +23,8 @@ namespace Sim.Infrastructure.Data.Context
         public DbSet<Empresa> SDE_Empresas { get; set; }
 
         public DbSet<Empresa_QSA> SDE_Empresas_QSA { get; set; }
+
+        public DbSet<Atendimento> Atendimentos { get; set; }
                 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,10 +32,12 @@ namespace Sim.Infrastructure.Data.Context
             modelBuilder.Entity<Pessoa>().ToTable("Pessoa");
             modelBuilder.Entity<Empresa>().ToTable("Empresa");
             modelBuilder.Entity<Empresa_QSA>().ToTable("EmpresaQsa");
+            modelBuilder.Entity<Atendimento>().ToTable("Atendimento");
 
             modelBuilder.ApplyConfiguration(new EntityConfig.SDE.PessoaMap());
             modelBuilder.ApplyConfiguration(new EntityConfig.SDE.EmpresaMap());
             modelBuilder.ApplyConfiguration(new EntityConfig.SDE.EmpresaQsaMap());
+            modelBuilder.ApplyConfiguration(new EntityConfig.SDE.AtendimentoMap());
 
             base.OnModelCreating(modelBuilder);
         }

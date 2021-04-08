@@ -19,6 +19,63 @@ namespace Sim.Infrastructure.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Sim.Domain.SDE.Entities.Atendimento", b =>
+                {
+                    b.Property<int>("Atendimento_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Canal")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime?>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Data_Alteracao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<int>("Empresa_Id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Fim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("Inicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Pessoa_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Protocolo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Servicos")
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<string>("Setor")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<int>("Usuario_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Atendimento_Id");
+
+                    b.HasIndex("Protocolo")
+                        .IsUnique();
+
+                    b.ToTable("Atendimento");
+                });
+
             modelBuilder.Entity("Sim.Domain.SDE.Entities.Empresa", b =>
                 {
                     b.Property<int>("Empresa_Id")
