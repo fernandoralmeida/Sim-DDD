@@ -10,7 +10,7 @@ using Sim.Infrastructure.Data.Context;
 namespace Sim.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DbContextSDE))]
-    [Migration("20210408042032_sde00")]
+    [Migration("20210409174423_sde00")]
     partial class sde00
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace Sim.Infrastructure.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Canal")
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<DateTime?>("Data")
                         .HasColumnType("datetime2");
@@ -62,13 +62,13 @@ namespace Sim.Infrastructure.Data.Migrations
                         .HasColumnType("varchar(150)");
 
                     b.Property<string>("Setor")
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Status")
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int>("Usuario_Id")
-                        .HasColumnType("int");
+                    b.Property<string>("UserName")
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Atendimento_Id");
 

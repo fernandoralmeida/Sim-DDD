@@ -8,5 +8,11 @@ namespace Sim.Domain.SDE.Entities
 {
     public class Setor
     {
+        public int ID { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Secretaria { get; set; }
+        public bool Ativo { get; set; }
     }
 }

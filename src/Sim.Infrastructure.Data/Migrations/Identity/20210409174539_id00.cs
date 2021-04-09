@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sim.Infrastructure.Data.Migrations.Identity
 {
-    public partial class idt00 : Migration
+    public partial class id00 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -155,6 +155,21 @@ namespace Sim.Infrastructure.Data.Migrations.Identity
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "466a8b9f-78b5-4424-a97d-7725fadd0d4d", "Administrador", "ADMINISTRADOR" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "Gender", "LastName", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "8e445865-a24d-4543-a6c6-9443d048cdb9", 0, "56ab8b78-5f2d-429c-8ed6-518f24a5677d", "Usuario", "sim@sim.com", true, "Masculino", "Web", false, null, "Sim", "SIM@SIM.COM", "OWNER", "AQAAAAEAACcQAAAAEAIq1b1tLC0pT+EkbvxqWakCkHP3Rtrd7Ea/jXslrW7d7jlEY3AgmrPrxkIvlra6PA==", "+111111111111", true, "7ec57ce3-555c-4dfb-a1df-99a6c46e84b3", false, "Owner" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "2c5e174e-3b0e-446f-86af-483d56fd7210", "8e445865-a24d-4543-a6c6-9443d048cdb9" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

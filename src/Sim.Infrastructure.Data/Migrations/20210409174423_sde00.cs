@@ -19,14 +19,14 @@ namespace Sim.Infrastructure.Data.Migrations
                     Fim = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Pessoa_Id = table.Column<int>(type: "int", nullable: false),
                     Empresa_Id = table.Column<int>(type: "int", nullable: false),
-                    Setor = table.Column<string>(type: "varchar(20)", nullable: true),
-                    Canal = table.Column<string>(type: "varchar(20)", nullable: true),
+                    Setor = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Canal = table.Column<string>(type: "varchar(50)", nullable: true),
                     Servicos = table.Column<string>(type: "varchar(150)", nullable: true),
                     Descricao = table.Column<string>(type: "varchar(150)", nullable: true),
                     Status = table.Column<string>(type: "varchar(20)", nullable: true),
                     Data_Alteracao = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Ativo = table.Column<bool>(type: "bit", nullable: false),
-                    Usuario_Id = table.Column<int>(type: "int", nullable: false)
+                    UserName = table.Column<string>(type: "varchar(256)", nullable: true)
                 },
                 constraints: table =>
                 {
