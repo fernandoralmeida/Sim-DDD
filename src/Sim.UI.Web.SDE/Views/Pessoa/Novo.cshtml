@@ -6,161 +6,176 @@
 
 <h5>Novo</h5>
 
-<partial name="_StatusMessage" model="Model.StatusMessage"/>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+<hr />
+<h6>Identificação</h6>
+
 
 <div>
-    <form class="row g-3 needs-validation" asp-action="Novo" novalidate>
 
-        <hr />
-        <h6>Identificação</h6>
+    <form asp-action="Novo" novalidate>
 
-        <div class="col-md-5">
-            <label asp-for="Nome" class="form-label" for="inputNome"></label>
-            <input asp-for="Nome" class="form-control" id="inputNome" required />
-        </div>
-        <div class="col-md-5">
-            <label asp-for="Nome_Social" class="form-label" for="inputSocial"></label>
-            <input asp-for="Nome_Social" class="form-control" id="inputSocial" />
-        </div>
-        <div class="col-md-2">
-            <label asp-for="Genero" class="form-label" for="selectGenero"></label>
-            <select asp-for="Genero" class="form-select" id="selectGenero">
-                <option selected></option>
-                <option>Feminino</option>
-                <option>Masculino</option>
-            </select>
-        </div>
+        <div class="mb-3 row">
 
-        <div class="col-md-3">
-            <label asp-for="Data_Nascimento" class="form-label" for="inputNascimento"></label>
-            <input asp-for="Data_Nascimento" class="form-control" id="inputNascimento" required />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="CPF" class="form-label" for="inputCPF"></label>
-            <input asp-for="CPF" class="form-control" id="inputCPF" required />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="RG" class="form-label" for="inputRG"></label>
-            <input asp-for="RG" class="form-control" id="inputRG" />
-        </div>
-        <div class="col-md-2">
-            <label asp-for="RG_Emissor" class="form-label" for="inputEmissor"></label>
-            <input asp-for="RG_Emissor" class="form-control text-uppercase" id="inputEmissor" />
-        </div>
-        <div class="col-md-1">
-            <label asp-for="RG_Emissor_UF" class="form-label" for="inputEmissorUF"></label>
-            <input asp-for="RG_Emissor_UF" class="form-control text-uppercase" id="inputEmissorUF" />
+            <div class="col-md-5">
+                <label asp-for="Nome" class="form-label" for="inputNome"></label>
+                <input asp-for="Nome" class="form-control" id="inputNome" required />
+            </div>
+            <div class="col-md-5">
+                <label asp-for="Nome_Social" class="form-label" for="inputSocial"></label>
+                <input asp-for="Nome_Social" class="form-control" id="inputSocial" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Genero" class="form-label" for="selectGenero"></label>
+                <select asp-for="Genero" class="form-select" id="selectGenero">
+                    <option selected></option>
+                    <option>Feminino</option>
+                    <option>Masculino</option>
+                </select>
+            </div>
         </div>
 
+        <div class="mb-3 row">
+            <div class="col-md-3">
+                <label asp-for="Data_Nascimento" class="form-label" for="inputNascimento"></label>
+                <input asp-for="Data_Nascimento" class="form-control" id="inputNascimento" required />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="CPF" class="form-label" for="inputCPF"></label>
+                <input asp-for="CPF" class="form-control" id="inputCPF" required />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="RG" class="form-label" for="inputRG"></label>
+                <input asp-for="RG" class="form-control" id="inputRG" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="RG_Emissor" class="form-label" for="inputEmissor"></label>
+                <input asp-for="RG_Emissor" class="form-control text-uppercase" id="inputEmissor" />
+            </div>
+            <div class="col-md-1">
+                <label asp-for="RG_Emissor_UF" class="form-label" for="inputEmissorUF"></label>
+                <input asp-for="RG_Emissor_UF" class="form-control text-uppercase" id="inputEmissorUF" />
+            </div>
+        </div>
         <hr />
         <h6>
             <label asp-for="Deficiencia" class="form-label"></label>
             <input asp-for="Deficiencia" class="form-control" hidden />
         </h6>
 
-        <div class="col-md-2">
-            <div class="form-switch">
-                <input asp-for="Fisica" type="checkbox" class="form-check-input" id="customSwitch1">
-                <label asp-for="Fisica" class="custom-control-label" for="customSwitch1"></label>
+        <div class="mb-3 row">
+
+            <div class="col-md-2">
+                <div class="form-switch">
+                    <input asp-for="Fisica" type="checkbox" class="form-check-input" id="customSwitch1">
+                    <label asp-for="Fisica" class="custom-control-label" for="customSwitch1"></label>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-switch">
-                <input asp-for="Visual" type="checkbox" class="form-check-input" id="customSwitch2">
-                <label asp-for="Visual" class="custom-control-label" for="customSwitch2"></label>
+            <div class="col-md-2">
+                <div class="form-switch">
+                    <input asp-for="Visual" type="checkbox" class="form-check-input" id="customSwitch2">
+                    <label asp-for="Visual" class="custom-control-label" for="customSwitch2"></label>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-switch">
-                <input asp-for="Auditiva" type="checkbox" class="form-check-input" id="customSwitch3">
-                <label asp-for="Auditiva" class="custom-control-label" for="customSwitch3"></label>
+            <div class="col-md-2">
+                <div class="form-switch">
+                    <input asp-for="Auditiva" type="checkbox" class="form-check-input" id="customSwitch3">
+                    <label asp-for="Auditiva" class="custom-control-label" for="customSwitch3"></label>
+                </div>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-switch">
-                <input asp-for="Intelectual" type="checkbox" class="form-check-input" id="customSwitch4">
-                <label asp-for="Intelectual" class="custom-control-label" for="customSwitch4"></label>
+            <div class="col-md-2">
+                <div class="form-switch">
+                    <input asp-for="Intelectual" type="checkbox" class="form-check-input" id="customSwitch4">
+                    <label asp-for="Intelectual" class="custom-control-label" for="customSwitch4"></label>
+                </div>
             </div>
+
         </div>
 
         <hr />
         <h6>Endereço</h6>
 
-
-        <div class="col-md-2">
-            <label asp-for="CEP" class="form-label" for="cep"></label>
-            <input asp-for="CEP" class="form-control" id="cep" />
-        </div>
-        <div class="col-md-8">
-            <label asp-for="Logradouro" class="form-label" for="rua"></label>
-            <input asp-for="Logradouro" class="form-control" id="rua" />
-        </div>
-        <div class="col-md-2">
-            <label asp-for="Numero" class="form-label"></label>
-            <input asp-for="Numero" class="form-control" />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="Complemento" class="form-label"></label>
-            <input asp-for="Complemento" class="form-control" />
-        </div>
-        <div class="col-md-5">
-            <label asp-for="Bairro" class="form-label" for="bairro"></label>
-            <input asp-for="Bairro" class="form-control" id="bairro" />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="Cidade" class="form-label" for="cidade"></label>
-            <input asp-for="Cidade" class="form-control" id="cidade" />
-        </div>
-        <div class="col-md-1">
-            <label asp-for="UF" class="form-label" for="uf"></label>
-            <input asp-for="UF" class="form-control" id="uf" />
-        </div>
-
-        <hr />
-        <h6>Contato</h6>
-
-
-        <div class="col-md-3">
-            <label asp-for="Tel_Movel" class="form-label"></label>
-            <input asp-for="Tel_Movel" class="form-control" id="txtmobile" />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="Tel_Fixo" class="form-label"></label>
-            <input asp-for="Tel_Fixo" class="form-control" id="txtphone" />
-        </div>
-        <div class="col-md-6">
-            <label asp-for="Email" class="form-label"></label>
-            <input asp-for="Email" class="form-control" />
-        </div>
-
-        <hr />
-        <h6>Informações</h6>
-
-
-        <div class="col-md-3">
-            <label asp-for="Data_Cadastro" class="form-label"></label>
-            <input asp-for="Data_Cadastro" class="form-control" disabled />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="Ultima_Alteracao" class="form-label"></label>
-            <input asp-for="Ultima_Alteracao" class="form-control" disabled />
-        </div>
-        <div class="col-md-3">
-            <label asp-for="Ativo" class="form-label"></label>
-            <div class="custom-control custom-switch">
-                <input asp-for="Ativo" type="checkbox" class="form-check-input" id="customSwitch5">
-                <label class="custom-control-label" for="customSwitch5">Ativo?</label>
+        <div class="mb-3 row">
+            <div class="col-md-2">
+                <label asp-for="CEP" class="form-label" for="cep"></label>
+                <input asp-for="CEP" class="form-control" id="cep" />
+            </div>
+            <div class="col-md-8">
+                <label asp-for="Logradouro" class="form-label" for="rua"></label>
+                <input asp-for="Logradouro" class="form-control" id="rua" />
+            </div>
+            <div class="col-md-2">
+                <label asp-for="Numero" class="form-label"></label>
+                <input asp-for="Numero" class="form-control" />
             </div>
         </div>
-        <p />
-        <div class="d-grid gap-2 d-md-block">
-            <a asp-action="Index" role="button" type="button" class="btn btn-secondary">Voltar</a>
-            <button type="submit" role="button" class="btn btn-primary">Gravar</button>
-        </div>
+        <div class="mb-3 row">
+            <div class="col-md-3">
+                <label asp-for="Complemento" class="form-label"></label>
+                <input asp-for="Complemento" class="form-control" />
+            </div>
+            <div class="col-md-5">
+                <label asp-for="Bairro" class="form-label" for="bairro"></label>
+                <input asp-for="Bairro" class="form-control" id="bairro" />
+            </div>
+            <div class="col-md-3">
+                <label asp-for="Cidade" class="form-label" for="cidade"></label>
+                <input asp-for="Cidade" class="form-control" id="cidade" />
+            </div>
+            <div class="col-md-1">
+                <label asp-for="UF" class="form-label" for="uf"></label>
+                <input asp-for="UF" class="form-control" id="uf" />
+            </div>
+            </div>
 
+            <hr />
+            <h6>Contato</h6>
+
+            <div class="mb-3 row">
+
+                <div class="col-md-3">
+                    <label asp-for="Tel_Movel" class="form-label"></label>
+                    <input asp-for="Tel_Movel" class="form-control" id="txtmobile" />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Tel_Fixo" class="form-label"></label>
+                    <input asp-for="Tel_Fixo" class="form-control" id="txtphone" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+            </div>
+
+            <hr />
+            <h6>Informações</h6>
+            <div class="mb-3 row">
+
+                <div class="col-md-3">
+                    <label asp-for="Data_Cadastro" class="form-label"></label>
+                    <input asp-for="Data_Cadastro" class="form-control" disabled />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Ultima_Alteracao" class="form-label"></label>
+                    <input asp-for="Ultima_Alteracao" class="form-control" disabled />
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Ativo" class="form-label"></label>
+                    <div class="custom-control custom-switch">
+                        <input asp-for="Ativo" type="checkbox" class="form-check-input" id="customSwitch5">
+                        <label class="custom-control-label" for="customSwitch5">Ativo?</label>
+                    </div>
+                </div>
+                <p />
+                <div class="d-grid gap-2 d-md-block">
+                    <a asp-action="Index" role="button" type="button" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" role="button" class="btn btn-primary">Gravar</button>
+                </div>
+            </div>
     </form>
-</div>
 
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

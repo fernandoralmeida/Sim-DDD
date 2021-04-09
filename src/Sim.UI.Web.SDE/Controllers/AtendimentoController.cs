@@ -23,13 +23,24 @@ namespace Sim.UI.Web.SDE.Controllers
         {
             _atendimentoAppService = atendimentoAppService;
             _mapper = mapper;
+            
         }
 
 
         // GET: AtendimentoController
-        public ActionResult Index()
-        {          
-             _atendimentoIndex.ListaAtendimento = _atendimentoAppService.GetByDate(DateTime.Now.Date);
+        public IActionResult Index()
+        {
+            _atendimentoIndex.DataAtendimento = DateTime.Now.Date;
+            _atendimentoIndex.ListaAtendimento = _atendimentoAppService.GetByDate(_atendimentoIndex.DataAtendimento);
+            return View(_atendimentoIndex);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(VMAtendimentoIndex collection)
+        {
+            _atendimentoIndex.DataAtendimento =collection.DataAtendimento;
+            _atendimentoIndex.ListaAtendimento = _atendimentoAppService.GetByDate(_atendimentoIndex.DataAtendimento);
             return View(_atendimentoIndex);
         }
 

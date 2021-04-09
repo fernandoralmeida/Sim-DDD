@@ -36,7 +36,7 @@ namespace Sim.Domain.SDE.Entities
 
         public bool Ativo { get; set; }
 
-        public int Usuario_Id { get; set; }
+        public string UserName { get; set; }
 
 
     }

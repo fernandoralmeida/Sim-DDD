@@ -23,9 +23,9 @@ namespace Sim.Infrastructure.Data.EntityConfig.SDE
             builder.Property(c => c.Pessoa_Id);
             builder.Property(c => c.Empresa_Id);
             builder.Property(c => c.Setor)
-                .HasColumnType("varchar(20)");
+                .HasColumnType("varchar(50)");
             builder.Property(c => c.Canal)
-                .HasColumnType("varchar(20)");
+                .HasColumnType("varchar(50)");
             builder.Property(c => c.Servicos)
                 .HasColumnType("varchar(150)");
             builder.Property(c => c.Descricao)
@@ -34,7 +34,8 @@ namespace Sim.Infrastructure.Data.EntityConfig.SDE
                 .HasColumnType("varchar(20)");
             builder.Property(c => c.Data_Alteracao);
             builder.Property(c => c.Ativo);
-            builder.Property(c => c.Usuario_Id);
+            builder.Property(c => c.UserName)
+                .HasColumnType("varchar(256)");
 
         }
     }

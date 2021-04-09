@@ -6,6 +6,26 @@ using System.Threading.Tasks;
 
 namespace Sim.UI.Web.SDE.ViewModels
 {
+    using Sim.Domain.SDE.Entities;
+
+    public class VMAtendimentoBase
+    {
+        [TempData]
+        public string StatusMessage { get; set; }
+
+        public Pessoa Pessoa { get; set; }
+        
+        public Empresa Empresa { get; set; }
+
+        public List<Setor> Setores { get; set; }
+
+        public List<Canal> Canais { get; set; }
+
+        public List<Servico> Servicos { get; set; }
+
+        public VMAtendimento Atendimento { get; set; }
+    }
+
     public class VMAtendimento
     {
         public int Atendimento_Id { get; set; }
@@ -26,7 +46,7 @@ namespace Sim.UI.Web.SDE.ViewModels
 
         public string Canal { get; set; }
 
-        public string Servicos { get; set; }
+        public string Servico { get; set; }
 
         public string Descricao { get; set; }
 
@@ -36,9 +56,7 @@ namespace Sim.UI.Web.SDE.ViewModels
 
         public bool Ativo { get; set; }
 
-        public int Usuario_Id { get; set; }
+        public string UserName { get; set; }
 
-        [TempData]
-        public string StatusMessage { get; set; }
     }
 }
